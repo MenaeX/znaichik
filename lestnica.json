@@ -1,0 +1,5653 @@
+{
+  "versiya": 71,
+  "obnovleno": "2026-08-29",
+  "kommentariy": [
+    "Лестница диагностики. Правится БЕЗ переписывания кода — так решено в архитектуре.",
+    "Порядок ступеней и правила движения — из plans/lestnica-diagnostiki.md.",
+    "🚨 Каждое задание помечено: iz_istochnika или nashe. Наше — гипотеза для проверки на детях."
+  ],
+  "pravila": {
+    "dolya_uspeha": 0.8,
+    "kommentariy_dolya": "Коридор 70-90 % верных (DoodleMaths), расчётный оптимум скорости обучения около 85 %. Было 75 %.",
+    "zadaniy_na_stupen": 3,
+    "otkat_posle_zatrudneniy": 2,
+    "kommentariy_otkat": "Два затруднения подряд — вниз, к посильному, и заканчиваем заход победой",
+    "zahod_minut": 10,
+    "avtopovtor_sekund": 6,
+    "kommentariy_povtor": "Молчит 6 с — зверь повторяет сам, ещё 6 — показывает",
+    "dolgo_dumala_sekund": 20,
+    "kommentariy_dolgo": "Дольше 20 с считаем «отвлеклась», а не «думала». У детей 4-6 лет одно касание ~14 с, перетаскивание ~27 с",
+    "zadaniy_v_zahode": 25,
+    "minut_v_zahode": 10
+  },
+  "zveri": [
+    "yozh",
+    "zayats",
+    "lisa",
+    "belka",
+    "medved"
+  ],
+  "navyki": {
+    "chtenie": {
+      "imya": "Чтение",
+      "stupeni": [
+        {
+          "id": "znakomstvo",
+          "imya": "Знакомство",
+          "opisanie_roditelyu": "Обучающий шаг, в замер не идёт",
+          "istochnik": "правило: первый успех до первого затруднения",
+          "tip": "znakomstvo",
+          "ne_zamer": true,
+          "zadaniya": [
+            {
+              "golos": "Привет! Я {zver}. Покажи самую большую ягодку, и пойдём играть",
+              "iz_istochnika": false
+            }
+          ]
+        },
+        {
+          "id": "nachalnyy_glasnyy",
+          "imya": "Слышит первый звук в слове",
+          "opisanie_roditelyu": "Узнаёт, с какого звука начинается слово (самая лёгкая позиция)",
+          "tip": "vybor",
+          "prioritet": true,
+          "zadaniya": [
+            {
+              "golos": "Аист. С какого звука начинается?",
+              "vybor": [
+                "И",
+                "У",
+                "О",
+                "А"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Арка. С какого звука начинается?",
+              "vybor": [
+                "И",
+                "У",
+                "А",
+                "О"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Астра. С какого звука начинается?",
+              "vybor": [
+                "А",
+                "Э",
+                "У",
+                "О"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Утка. С какого звука начинается?",
+              "vybor": [
+                "О",
+                "А",
+                "У",
+                "Э"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Ухо. С какого звука начинается?",
+              "vybor": [
+                "У",
+                "И",
+                "О",
+                "А"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Утро. С какого звука начинается?",
+              "vybor": [
+                "У",
+                "И",
+                "О",
+                "А"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Облако. С какого звука начинается?",
+              "vybor": [
+                "У",
+                "И",
+                "Э",
+                "О"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Ослик. С какого звука начинается?",
+              "vybor": [
+                "У",
+                "И",
+                "О",
+                "А"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Обруч. С какого звука начинается?",
+              "vybor": [
+                "Э",
+                "О",
+                "И",
+                "А"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Ива. С какого звука начинается?",
+              "vybor": [
+                "У",
+                "О",
+                "А",
+                "И"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Иглы. С какого звука начинается?",
+              "vybor": [
+                "А",
+                "О",
+                "И",
+                "Э"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Ирис. С какого звука начинается?",
+              "vybor": [
+                "Э",
+                "У",
+                "И",
+                "А"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "nemaya_artikulyaciya",
+          "imya": "Узнаёт звук по губам",
+          "opisanie_roditelyu": "Угадывает букву по беззвучному движению рта",
+          "tip": "nemaya",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "",
+              "rot": "а",
+              "vybor": [
+                "И",
+                "А",
+                "Э",
+                "У"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "а",
+              "vybor": [
+                "О",
+                "А",
+                "И",
+                "Э"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "а",
+              "vybor": [
+                "А",
+                "О",
+                "И",
+                "Э"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "у",
+              "vybor": [
+                "Э",
+                "А",
+                "О",
+                "У"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "у",
+              "vybor": [
+                "И",
+                "Э",
+                "О",
+                "У"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "у",
+              "vybor": [
+                "И",
+                "О",
+                "У",
+                "А"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "о",
+              "vybor": [
+                "Э",
+                "О",
+                "А",
+                "У"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "о",
+              "vybor": [
+                "О",
+                "Э",
+                "А",
+                "У"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "",
+              "rot": "о",
+              "vybor": [
+                "О",
+                "У",
+                "А",
+                "И"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            }
+          ],
+          "ne_zamer": true
+        },
+        {
+          "id": "konechnyy_soglasnyy",
+          "imya": "Слышит последний звук",
+          "opisanie_roditelyu": "Узнаёт, каким звуком кончается слово",
+          "tip": "vybor",
+          "prioritet": true,
+          "zadaniya": [
+            {
+              "golos": "Дом. На какой звук кончается?",
+              "vybor": [
+                "Л",
+                "В",
+                "Ш",
+                "М"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Дым. На какой звук кончается?",
+              "vybor": [
+                "С",
+                "Ф",
+                "Н",
+                "М"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Нос. На какой звук кончается?",
+              "vybor": [
+                "Ж",
+                "С",
+                "М",
+                "Х"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лес. На какой звук кончается?",
+              "vybor": [
+                "С",
+                "Л",
+                "Н",
+                "Ж"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Мох. На какой звук кончается?",
+              "vybor": [
+                "М",
+                "З",
+                "Ж",
+                "Х"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Шар. На какой звук кончается?",
+              "vybor": [
+                "Р",
+                "З",
+                "М",
+                "Ш"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сыр. На какой звук кончается?",
+              "vybor": [
+                "Х",
+                "Ж",
+                "Р",
+                "Ф"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Камыш. На какой звук кончается?",
+              "vybor": [
+                "З",
+                "М",
+                "Р",
+                "Ш"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Малыш. На какой звук кончается?",
+              "vybor": [
+                "М",
+                "Ш",
+                "Л",
+                "Х"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Стол. На какой звук кончается?",
+              "vybor": [
+                "С",
+                "Л",
+                "З",
+                "Ж"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Пол. На какой звук кончается?",
+              "vybor": [
+                "Х",
+                "Ж",
+                "Л",
+                "Ш"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Слон. На какой звук кончается?",
+              "vybor": [
+                "Р",
+                "Ф",
+                "Н",
+                "Ш"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "vzryvnoy_v_konce",
+          "imya": "Слышит короткий звук в конце",
+          "opisanie_roditelyu": "Узнаёт звуки, которые нельзя тянуть: к, т, п",
+          "tip": "vybor",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "Мак. На какой звук кончается?",
+              "vybor": [
+                "К",
+                "С",
+                "П",
+                "Т"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сок. На какой звук кончается?",
+              "vybor": [
+                "Н",
+                "С",
+                "Ш",
+                "К"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лук. На какой звук кончается?",
+              "vybor": [
+                "К",
+                "Ш",
+                "Л",
+                "М"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Кот. На какой звук кончается?",
+              "vybor": [
+                "П",
+                "К",
+                "Т",
+                "М"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Кит. На какой звук кончается?",
+              "vybor": [
+                "Ш",
+                "Т",
+                "Р",
+                "М"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Бант. На какой звук кончается?",
+              "vybor": [
+                "Т",
+                "Р",
+                "С",
+                "П"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Суп. На какой звук кончается?",
+              "vybor": [
+                "Ш",
+                "П",
+                "К",
+                "М"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сноп. На какой звук кончается?",
+              "vybor": [
+                "Р",
+                "Н",
+                "Х",
+                "П"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Мох. На какой звук кончается?",
+              "vybor": [
+                "М",
+                "К",
+                "Х",
+                "Л"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Палец. На какой звук кончается?",
+              "vybor": [
+                "Р",
+                "К",
+                "Л",
+                "Ц"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "pervyy_zvuk",
+          "imya": "Слышит первый звук согласного",
+          "opisanie_roditelyu": "Узнаёт начальный согласный — позиция труднее гласного и конечного",
+          "istochnik": "Эльконин, Журова",
+          "tip": "pokazat_kartinku",
+          "zadaniya": [
+            {
+              "golos": "Ключ. Ключ начинается на К. Что тоже начинается на К?",
+              "vybor": [
+                "кот",
+                "хлеб",
+                "эскимо",
+                "заяц",
+                "утка"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Дым. Дым начинается на Д. Что тоже начинается на Д?",
+              "vybor": [
+                "дом",
+                "заяц",
+                "кот",
+                "лиса",
+                "мяч"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Мама. Мама начинается на М. Что тоже начинается на М?",
+              "vybor": [
+                "заяц",
+                "сани",
+                "кот",
+                "мяч",
+                "белка"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Луна. Луна начинается на Л. Что тоже начинается на Л?",
+              "vybor": [
+                "зонт",
+                "кот",
+                "медведь",
+                "лук",
+                "волк"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Радуга. Радуга начинается на Р. Что тоже начинается на Р?",
+              "vybor": [
+                "арбуз",
+                "рак",
+                "тигр",
+                "дом",
+                "мяч"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Туча. Туча начинается на Т. Что тоже начинается на Т?",
+              "vybor": [
+                "тигр",
+                "лук",
+                "облако",
+                "игла",
+                "волк"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Луна. Луна начинается на Л. Что тоже начинается на Л?",
+              "vybor": [
+                "игла",
+                "жук",
+                "утка",
+                "носок",
+                "лиса"
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Арбуз. Арбуз начинается на А. Что ещё?",
+              "vybor": [
+                "шар",
+                "арбуз",
+                "облако",
+                "лиса",
+                "жук"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Вода. Вода начинается на В. Что тоже начинается на В?",
+              "vybor": [
+                "хлеб",
+                "флаг",
+                "лук",
+                "волк",
+                "кот"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Жук. Жук начинается на Ж. Что ещё?",
+              "vybor": [
+                "зонт",
+                "жук",
+                "лук",
+                "мяч",
+                "облако"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            }
+          ],
+          "prioritet": false
+        },
+        {
+          "id": "mesto_zvuka",
+          "imya": "Слышит, где звук в слове",
+          "opisanie_roditelyu": "Определяет, в начале, середине или конце слова слышен звук",
+          "tip": "shema_slova",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "Лампа. Лампа. Где живёт этот звук?",
+              "shema": 5,
+              "verno": 2,
+              "slovo": "ЛАМПА",
+              "zvuk": "М",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Нос. Нос. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 2,
+              "slovo": "НОС",
+              "zvuk": "С",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Халат. Халат. Где живёт этот звук?",
+              "shema": 5,
+              "verno": 0,
+              "slovo": "ХАЛАТ",
+              "zvuk": "Х",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Дом. Дом. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 2,
+              "slovo": "ДОМ",
+              "zvuk": "М",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Мак. Мак. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 0,
+              "slovo": "МАК",
+              "zvuk": "М",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сыр. Сыр. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 0,
+              "slovo": "СЫР",
+              "zvuk": "С",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Дым. Дым. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 2,
+              "slovo": "ДЫМ",
+              "zvuk": "М",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Санки. Санки. Где живёт этот звук?",
+              "shema": 5,
+              "verno": 0,
+              "slovo": "САНКИ",
+              "zvuk": "С",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лес. Лес. Где живёт этот звук?",
+              "shema": 3,
+              "verno": 2,
+              "slovo": "ЛЕС",
+              "zvuk": "С",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лимон. Лимон. Где живёт этот звук?",
+              "shema": 5,
+              "verno": 2,
+              "slovo": "ЛИМОН",
+              "zvuk": "М",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Муха. Муха. Где живёт этот звук?",
+              "shema": 4,
+              "verno": 2,
+              "slovo": "МУХА",
+              "zvuk": "Х",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лиса. Лиса. Где живёт этот звук?",
+              "shema": 4,
+              "verno": 2,
+              "slovo": "ЛИСА",
+              "zvuk": "С",
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "bukvy",
+          "imya": "Знает буквы",
+          "opisanie_roditelyu": "Узнаёт букву, когда слышит её звук",
+          "istochnik": "ФОП 6–7 лет (содержание программы, не норма)",
+          "tip": "pokazat_bukvu",
+          "zadaniya": [
+            {
+              "golos": "Рак. Рак. С какой буквы начинается?",
+              "vybor": [
+                "Т",
+                "Щ",
+                "Е",
+                "Ж",
+                "Р",
+                "У"
+              ],
+              "verno": 4,
+              "predmet": "rak",
+              "slovo": "рак",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Флаг. Флаг. С какой буквы начинается?",
+              "vybor": [
+                "Н",
+                "Ж",
+                "Л",
+                "Э",
+                "Ф",
+                "Т"
+              ],
+              "verno": 4,
+              "predmet": "flag",
+              "slovo": "флаг",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Жук. Жук. С какой буквы начинается?",
+              "vybor": [
+                "С",
+                "Г",
+                "О",
+                "Ы",
+                "Ж",
+                "И"
+              ],
+              "verno": 4,
+              "predmet": "zhuk",
+              "slovo": "жук",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Утка. Утка. С какой буквы начинается?",
+              "vybor": [
+                "Ш",
+                "Й",
+                "И",
+                "З",
+                "У",
+                "М"
+              ],
+              "verno": 4,
+              "predmet": "utka",
+              "slovo": "утка",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Цапля. Цапля. С какой буквы начинается?",
+              "vybor": [
+                "С",
+                "Р",
+                "Ц",
+                "Д",
+                "Ё",
+                "Л"
+              ],
+              "verno": 2,
+              "predmet": "caplya",
+              "slovo": "цапля",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Санки. Санки. С какой буквы начинается?",
+              "vybor": [
+                "М",
+                "Д",
+                "Ю",
+                "К",
+                "Ч",
+                "С"
+              ],
+              "verno": 5,
+              "predmet": "sani",
+              "slovo": "санки",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Арбуз. Арбуз. С какой буквы начинается?",
+              "vybor": [
+                "А",
+                "И",
+                "К",
+                "Н",
+                "З",
+                "Е"
+              ],
+              "verno": 0,
+              "predmet": "arbuz",
+              "slovo": "арбуз",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Носок. Носок. С какой буквы начинается?",
+              "vybor": [
+                "Н",
+                "О",
+                "П",
+                "Ц",
+                "З",
+                "Ы"
+              ],
+              "verno": 0,
+              "predmet": "nosok",
+              "slovo": "носок",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Мяч. Мяч. С какой буквы начинается?",
+              "vybor": [
+                "Т",
+                "Ю",
+                "Ш",
+                "Ч",
+                "М",
+                "Д"
+              ],
+              "verno": 4,
+              "predmet": "myach",
+              "slovo": "мяч",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Облако. Облако. С какой буквы начинается?",
+              "vybor": [
+                "О",
+                "Ю",
+                "З",
+                "Е",
+                "М",
+                "Й"
+              ],
+              "verno": 0,
+              "predmet": "oblako",
+              "slovo": "облако",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Волк. Волк. С какой буквы начинается?",
+              "vybor": [
+                "П",
+                "Г",
+                "В",
+                "Ё",
+                "Б",
+                "Ж"
+              ],
+              "verno": 2,
+              "predmet": "volk",
+              "slovo": "волк",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Шар. Шар. С какой буквы начинается?",
+              "vybor": [
+                "Ы",
+                "Ш",
+                "Ч",
+                "М",
+                "Э",
+                "О"
+              ],
+              "verno": 1,
+              "predmet": "shar",
+              "slovo": "шар",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Лук. Лук. С какой буквы начинается?",
+              "vybor": [
+                "Я",
+                "У",
+                "Л",
+                "Ф",
+                "Б",
+                "С"
+              ],
+              "verno": 2,
+              "predmet": "luk",
+              "slovo": "лук",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Зонт. Зонт. С какой буквы начинается?",
+              "vybor": [
+                "Ё",
+                "И",
+                "З",
+                "Э",
+                "Ц",
+                "Е"
+              ],
+              "verno": 2,
+              "predmet": "zont",
+              "slovo": "зонт",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Эскимо. Эскимо. С какой буквы начинается?",
+              "vybor": [
+                "Т",
+                "З",
+                "Э",
+                "Ж",
+                "Ч",
+                "Е"
+              ],
+              "verno": 2,
+              "predmet": "eskimo",
+              "slovo": "эскимо",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Игла. Игла. С какой буквы начинается?",
+              "vybor": [
+                "Ф",
+                "И",
+                "Н",
+                "Ё",
+                "А",
+                "Т"
+              ],
+              "verno": 1,
+              "predmet": "igla",
+              "slovo": "игла",
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Хлеб. Хлеб. С какой буквы начинается?",
+              "vybor": [
+                "О",
+                "Х",
+                "Ё",
+                "С",
+                "П",
+                "Л"
+              ],
+              "verno": 1,
+              "predmet": "hleb",
+              "slovo": "хлеб",
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "tekst",
+          "imya": "Знает, откуда начинают читать",
+          "opisanie_roditelyu": "После показа понимает, что читают слева направо",
+          "istochnik": "iPIPS — самый лёгкий блок, стоит перед знанием букв",
+          "tip": "stroka_teksta",
+          "zadaniya": [
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "мама",
+                "мыла",
+                "раму"
+              ],
+              "verno": 0,
+              "pokaz_snachala": true,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "кот",
+                "пил",
+                "сок"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "лиса",
+                "ушла",
+                "в лес"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "у нас",
+                "дома",
+                "кот"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "papa",
+                "копал",
+                "сад"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "зима",
+                "была",
+                "долгой"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "сова",
+                "ухала",
+                "ночью"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "мы",
+                "пошли",
+                "гулять"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "жук",
+                "сидел",
+                "на розе"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "рыба",
+                "плыла",
+                "в реке"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "ветер",
+                "качал",
+                "ветки"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "С какого слова начнём читать эту строчку?",
+              "stroka": [
+                "дети",
+                "лепят",
+                "снег"
+              ],
+              "verno": 0,
+              "pokaz_snachala": false,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "pohozhie_bukvy",
+          "imya": "Различает похожие буквы",
+          "opisanie_roditelyu": "Не путает Б и Д, Ш и Щ",
+          "istochnik": "наше решение по типичным смешениям",
+          "tip": "pokazat_bukvu",
+          "zadaniya": [
+            {
+              "golos": "{zver} путает эти буквы. Где тут Б?",
+              "vybor": [
+                "Б",
+                "К",
+                "Д",
+                "Щ"
+              ],
+              "verno": 0,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Шар. Шар. Какая буква первая?",
+              "vybor": [
+                "Ш",
+                "Щ",
+                "Ь",
+                "И"
+              ],
+              "verno": 0,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Игла. Игла. Какая буква первая?",
+              "vybor": [
+                "Й",
+                "Б",
+                "И",
+                "Ь"
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} путает эти буквы. Где тут П?",
+              "vybor": [
+                "Д",
+                "П",
+                "Т",
+                "Й"
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Цапля. Цапля. Какая буква первая?",
+              "vybor": [
+                "Ц",
+                "В",
+                "Щ",
+                "Т"
+              ],
+              "verno": 0,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Рак. Рак. Какая буква первая?",
+              "vybor": [
+                "К",
+                "Б",
+                "Р",
+                "Ь"
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Зонт. Зонт. Какая буква первая?",
+              "vybor": [
+                "Ы",
+                "З",
+                "В",
+                "Э"
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Мяч. Мяч. Какая буква первая?",
+              "vybor": [
+                "Ъ",
+                "М",
+                "В",
+                "Ш"
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            }
+          ]
+        },
+        {
+          "id": "slog",
+          "imya": "Складывает слоги",
+          "opisanie_roditelyu": "Соединяет два звука в слог",
+          "istochnik": "Жукова — слог из тянущихся звуков",
+          "tip": "sobrat",
+          "zadaniya": [
+            {
+              "golos": "{zver} собирает шу. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Ш",
+                "У"
+              ],
+              "bukvy": [
+                "Л",
+                "Ш",
+                "У",
+                "В"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает сы. Это начало слова СЫР. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "сыр",
+              "otvet": [
+                "С",
+                "Ы"
+              ],
+              "bukvy": [
+                "Я",
+                "Ш",
+                "Ы",
+                "С"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ву. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "В",
+                "У"
+              ],
+              "bukvy": [
+                "М",
+                "В",
+                "У",
+                "Е"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ши. Это начало слова ШИШКА. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "шишка",
+              "otvet": [
+                "Ш",
+                "И"
+              ],
+              "bukvy": [
+                "В",
+                "Ш",
+                "И",
+                "Л"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ха. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Х",
+                "А"
+              ],
+              "bukvy": [
+                "М",
+                "Р",
+                "Х",
+                "А"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает до. Это начало слова ДОМ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "дом",
+              "otvet": [
+                "Д",
+                "О"
+              ],
+              "bukvy": [
+                "Е",
+                "У",
+                "О",
+                "Д"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ша. Это начало слова ШАР. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "шар",
+              "otvet": [
+                "Ш",
+                "А"
+              ],
+              "bukvy": [
+                "Ш",
+                "Э",
+                "А",
+                "С"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает но. Это начало слова НОС. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "нос",
+              "otvet": [
+                "Н",
+                "О"
+              ],
+              "bukvy": [
+                "Н",
+                "А",
+                "О",
+                "И"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ру. Это начало слова РУКА. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "рука",
+              "otvet": [
+                "Р",
+                "У"
+              ],
+              "bukvy": [
+                "У",
+                "Ш",
+                "Ы",
+                "Р"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ло. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Л",
+                "О"
+              ],
+              "bukvy": [
+                "Л",
+                "Ф",
+                "О",
+                "Ё"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает па. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "П",
+                "А"
+              ],
+              "bukvy": [
+                "П",
+                "Ю",
+                "Я",
+                "А"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ра. Это начало слова РАК. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "рак",
+              "otvet": [
+                "Р",
+                "А"
+              ],
+              "bukvy": [
+                "Р",
+                "М",
+                "А",
+                "Ш"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает да. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Д",
+                "А"
+              ],
+              "bukvy": [
+                "С",
+                "Д",
+                "А",
+                "М"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает со. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "С",
+                "О"
+              ],
+              "bukvy": [
+                "Л",
+                "О",
+                "С",
+                "И"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ба. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Б",
+                "А"
+              ],
+              "bukvy": [
+                "Е",
+                "А",
+                "Ю",
+                "Б"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает гу. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Г",
+                "У"
+              ],
+              "bukvy": [
+                "Р",
+                "У",
+                "Ф",
+                "Г"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает са. Это начало слова САНКИ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "санки",
+              "otvet": [
+                "С",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "Ё",
+                "С",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает зу. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "З",
+                "У"
+              ],
+              "bukvy": [
+                "Я",
+                "З",
+                "У",
+                "Ф"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ху. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Х",
+                "У"
+              ],
+              "bukvy": [
+                "С",
+                "Х",
+                "У",
+                "И"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ры. Это начало слова РЫБА. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "рыба",
+              "otvet": [
+                "Р",
+                "Ы"
+              ],
+              "bukvy": [
+                "Э",
+                "У",
+                "Р",
+                "Ы"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает фа. Это начало слова ФАРТУК. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "фартук",
+              "otvet": [
+                "Ф",
+                "А"
+              ],
+              "bukvy": [
+                "М",
+                "Ф",
+                "А",
+                "Э"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ро. Это начало слова РОЗА. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "роза",
+              "otvet": [
+                "Р",
+                "О"
+              ],
+              "bukvy": [
+                "О",
+                "Р",
+                "Л",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ко. Это начало слова КОМ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "ком",
+              "otvet": [
+                "К",
+                "О"
+              ],
+              "bukvy": [
+                "Е",
+                "О",
+                "Э",
+                "К"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает бу. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Б",
+                "У"
+              ],
+              "bukvy": [
+                "Б",
+                "Н",
+                "Ж",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает мо. Это начало слова МОХ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "мох",
+              "otvet": [
+                "М",
+                "О"
+              ],
+              "bukvy": [
+                "В",
+                "М",
+                "О",
+                "Щ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает по. Это начало слова ПОЛ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "пол",
+              "otvet": [
+                "П",
+                "О"
+              ],
+              "bukvy": [
+                "Н",
+                "П",
+                "А",
+                "О"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает вы. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "В",
+                "Ы"
+              ],
+              "bukvy": [
+                "Э",
+                "З",
+                "Ы",
+                "В"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает му. Это начало слова МУХА. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "муха",
+              "otvet": [
+                "М",
+                "У"
+              ],
+              "bukvy": [
+                "М",
+                "В",
+                "Е",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает во. Это начало слова ВОЛК. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "волк",
+              "otvet": [
+                "В",
+                "О"
+              ],
+              "bukvy": [
+                "О",
+                "В",
+                "А",
+                "Л"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает мы. Это начало слова МЫС. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "мыс",
+              "otvet": [
+                "М",
+                "Ы"
+              ],
+              "bukvy": [
+                "Ы",
+                "Р",
+                "М",
+                "З"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает пу. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "П",
+                "У"
+              ],
+              "bukvy": [
+                "П",
+                "Ю",
+                "З",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает зо. Это начало слова ЗОНТ. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "зонт",
+              "otvet": [
+                "З",
+                "О"
+              ],
+              "bukvy": [
+                "Ж",
+                "О",
+                "С",
+                "З"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ри. Это начало слова РИС. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": "рис",
+              "otvet": [
+                "Р",
+                "И"
+              ],
+              "bukvy": [
+                "Р",
+                "Ю",
+                "А",
+                "И"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ну. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Н",
+                "У"
+              ],
+              "bukvy": [
+                "Н",
+                "М",
+                "Я",
+                "У"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает лы. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Л",
+                "Ы"
+              ],
+              "bukvy": [
+                "Ы",
+                "У",
+                "Л",
+                "М"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает га. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Г",
+                "А"
+              ],
+              "bukvy": [
+                "Я",
+                "А",
+                "Ё",
+                "Г"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает шо. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Ш",
+                "О"
+              ],
+              "bukvy": [
+                "Ф",
+                "О",
+                "Я",
+                "Ш"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает си. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "С",
+                "И"
+              ],
+              "bukvy": [
+                "У",
+                "С",
+                "Ш",
+                "И"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает су. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "С",
+                "У"
+              ],
+              "bukvy": [
+                "У",
+                "С",
+                "Ю",
+                "Щ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собирает ду. Поможешь нажать буквы по порядку?",
+              "slovo_podskazka": null,
+              "otvet": [
+                "Д",
+                "У"
+              ],
+              "bukvy": [
+                "У",
+                "Щ",
+                "В",
+                "Д"
+              ],
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "slovo3",
+          "imya": "Читает слова из трёх букв",
+          "opisanie_roditelyu": "Собирает и узнаёт короткие слова",
+          "istochnik": "порядок из букварей; формулировка наша",
+          "tip": "sobrat",
+          "zadaniya": [
+            {
+              "golos": "{zver} ищет слово СОК. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "О",
+                "К"
+              ],
+              "bukvy": [
+                "Ю",
+                "О",
+                "Д",
+                "С",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ДОМ. Поможешь собрать?",
+              "otvet": [
+                "Д",
+                "О",
+                "М"
+              ],
+              "bukvy": [
+                "М",
+                "Ф",
+                "Д",
+                "Б",
+                "О"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КОТ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "О",
+                "Т"
+              ],
+              "bukvy": [
+                "Т",
+                "Р",
+                "О",
+                "С",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово СОМ. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "О",
+                "М"
+              ],
+              "bukvy": [
+                "Ч",
+                "М",
+                "Д",
+                "О",
+                "С"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово СЫН. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "Ы",
+                "Н"
+              ],
+              "bukvy": [
+                "Ы",
+                "С",
+                "Н",
+                "Э",
+                "Ч"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ШАР. Поможешь собрать?",
+              "otvet": [
+                "Ш",
+                "А",
+                "Р"
+              ],
+              "bukvy": [
+                "А",
+                "Щ",
+                "В",
+                "Ш",
+                "Р"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ДАР. Поможешь собрать?",
+              "otvet": [
+                "Д",
+                "А",
+                "Р"
+              ],
+              "bukvy": [
+                "Д",
+                "Ю",
+                "Х",
+                "Р",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КОТ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "О",
+                "Т"
+              ],
+              "bukvy": [
+                "Р",
+                "Х",
+                "О",
+                "Т",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РАК. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "А",
+                "К"
+              ],
+              "bukvy": [
+                "В",
+                "П",
+                "Р",
+                "А",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛУК. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "У",
+                "К"
+              ],
+              "bukvy": [
+                "К",
+                "Ё",
+                "У",
+                "Т",
+                "Л"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово БЫК. Поможешь собрать?",
+              "otvet": [
+                "Б",
+                "Ы",
+                "К"
+              ],
+              "bukvy": [
+                "И",
+                "Л",
+                "Ы",
+                "Б",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово СУП. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "У",
+                "П"
+              ],
+              "bukvy": [
+                "П",
+                "Д",
+                "У",
+                "С",
+                "В"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ДОМ. Поможешь собрать?",
+              "otvet": [
+                "Д",
+                "О",
+                "М"
+              ],
+              "bukvy": [
+                "Ч",
+                "Д",
+                "М",
+                "О",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ПУХ. Поможешь собрать?",
+              "otvet": [
+                "П",
+                "У",
+                "Х"
+              ],
+              "bukvy": [
+                "У",
+                "О",
+                "Х",
+                "А",
+                "П"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ПАР. Поможешь собрать?",
+              "otvet": [
+                "П",
+                "А",
+                "Р"
+              ],
+              "bukvy": [
+                "Х",
+                "Я",
+                "А",
+                "Р",
+                "П"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово СОН. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "О",
+                "Н"
+              ],
+              "bukvy": [
+                "С",
+                "Л",
+                "О",
+                "Т",
+                "Н"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ГУЛ. Поможешь собрать?",
+              "otvet": [
+                "Г",
+                "У",
+                "Л"
+              ],
+              "bukvy": [
+                "У",
+                "З",
+                "Л",
+                "Г",
+                "Й"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РОТ. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "О",
+                "Т"
+              ],
+              "bukvy": [
+                "Б",
+                "О",
+                "Ф",
+                "Р",
+                "Т"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РИС. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "И",
+                "С"
+              ],
+              "bukvy": [
+                "С",
+                "Р",
+                "Б",
+                "И",
+                "М"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово БЫК. Поможешь собрать?",
+              "otvet": [
+                "Б",
+                "Ы",
+                "К"
+              ],
+              "bukvy": [
+                "К",
+                "Ы",
+                "Б",
+                "Э",
+                "Р"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово НОС. Поможешь собрать?",
+              "otvet": [
+                "Н",
+                "О",
+                "С"
+              ],
+              "bukvy": [
+                "Н",
+                "С",
+                "О",
+                "П",
+                "З"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЖУК. Поможешь собрать?",
+              "otvet": [
+                "Ж",
+                "У",
+                "К"
+              ],
+              "bukvy": [
+                "Н",
+                "К",
+                "Ж",
+                "У",
+                "Э"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КОМ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "О",
+                "М"
+              ],
+              "bukvy": [
+                "О",
+                "К",
+                "З",
+                "Л",
+                "М"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЗАЛ. Поможешь собрать?",
+              "otvet": [
+                "З",
+                "А",
+                "Л"
+              ],
+              "bukvy": [
+                "З",
+                "Ж",
+                "Ю",
+                "Л",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ТОК. Поможешь собрать?",
+              "otvet": [
+                "Т",
+                "О",
+                "К"
+              ],
+              "bukvy": [
+                "Ф",
+                "Ё",
+                "О",
+                "К",
+                "Т"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ДЫМ. Поможешь собрать?",
+              "otvet": [
+                "Д",
+                "Ы",
+                "М"
+              ],
+              "bukvy": [
+                "З",
+                "Ы",
+                "Э",
+                "Д",
+                "М"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЖАР. Поможешь собрать?",
+              "otvet": [
+                "Ж",
+                "А",
+                "Р"
+              ],
+              "bukvy": [
+                "Н",
+                "У",
+                "Ж",
+                "А",
+                "Р"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КОЛ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "О",
+                "Л"
+              ],
+              "bukvy": [
+                "Ч",
+                "Л",
+                "К",
+                "В",
+                "О"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛЕС. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "Е",
+                "С"
+              ],
+              "bukvy": [
+                "Е",
+                "С",
+                "Д",
+                "М",
+                "Л"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КИТ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "И",
+                "Т"
+              ],
+              "bukvy": [
+                "И",
+                "К",
+                "Т",
+                "Л",
+                "Ф"
+              ],
+              "iz_istochnika": false
+            }
+          ]
+        },
+        {
+          "id": "slovo4",
+          "imya": "Читает слова из четырёх букв",
+          "opisanie_roditelyu": "Справляется со словами подлиннее",
+          "istochnik": "порядок из букварей; формулировка наша",
+          "tip": "sobrat",
+          "zadaniya": [
+            {
+              "golos": "{zver} ищет слово РУКА. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "У",
+                "К",
+                "А"
+              ],
+              "bukvy": [
+                "К",
+                "А",
+                "У",
+                "Р",
+                "П",
+                "Е"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЖАБА. Поможешь собрать?",
+              "otvet": [
+                "Ж",
+                "А",
+                "Б",
+                "А"
+              ],
+              "bukvy": [
+                "Й",
+                "А",
+                "З",
+                "Б",
+                "А",
+                "Ж"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РОЗА. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "О",
+                "З",
+                "А"
+              ],
+              "bukvy": [
+                "М",
+                "Я",
+                "А",
+                "З",
+                "Р",
+                "О"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛУЖА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "У",
+                "Ж",
+                "А"
+              ],
+              "bukvy": [
+                "Б",
+                "Д",
+                "Ж",
+                "Л",
+                "А",
+                "У"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛИСА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "И",
+                "С",
+                "А"
+              ],
+              "bukvy": [
+                "Ю",
+                "А",
+                "Л",
+                "Т",
+                "С",
+                "И"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЗУБЫ. Поможешь собрать?",
+              "otvet": [
+                "З",
+                "У",
+                "Б",
+                "Ы"
+              ],
+              "bukvy": [
+                "Ф",
+                "Р",
+                "Ы",
+                "Б",
+                "У",
+                "З"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ШАПКА. Поможешь собрать?",
+              "otvet": [
+                "Ш",
+                "А",
+                "П",
+                "К",
+                "А"
+              ],
+              "bukvy": [
+                "Ш",
+                "А",
+                "А",
+                "Я",
+                "П",
+                "К",
+                "Ю"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ШАРИК. Поможешь собрать?",
+              "otvet": [
+                "Ш",
+                "А",
+                "Р",
+                "И",
+                "К"
+              ],
+              "bukvy": [
+                "К",
+                "Ш",
+                "И",
+                "Ц",
+                "Р",
+                "А",
+                "Л"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ПИЛА. Поможешь собрать?",
+              "otvet": [
+                "П",
+                "И",
+                "Л",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "Л",
+                "Э",
+                "Р",
+                "П",
+                "И"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КОЗА. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "О",
+                "З",
+                "А"
+              ],
+              "bukvy": [
+                "К",
+                "З",
+                "Р",
+                "А",
+                "О",
+                "Ш"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово САНИ. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "А",
+                "Н",
+                "И"
+              ],
+              "bukvy": [
+                "Й",
+                "И",
+                "А",
+                "Н",
+                "С",
+                "Ч"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово МАМА. Поможешь собрать?",
+              "otvet": [
+                "М",
+                "А",
+                "М",
+                "А"
+              ],
+              "bukvy": [
+                "М",
+                "А",
+                "И",
+                "А",
+                "Ш",
+                "М"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ВАТА. Поможешь собрать?",
+              "otvet": [
+                "В",
+                "А",
+                "Т",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "А",
+                "И",
+                "В",
+                "Т",
+                "У"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЗУБР. Поможешь собрать?",
+              "otvet": [
+                "З",
+                "У",
+                "Б",
+                "Р"
+              ],
+              "bukvy": [
+                "Г",
+                "Б",
+                "Я",
+                "Р",
+                "У",
+                "З"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛАМА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "А",
+                "М",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "М",
+                "Т",
+                "П",
+                "Л",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово СТОЛ. Поможешь собрать?",
+              "otvet": [
+                "С",
+                "Т",
+                "О",
+                "Л"
+              ],
+              "bukvy": [
+                "Л",
+                "Т",
+                "О",
+                "З",
+                "С",
+                "Х"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛАПКА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "А",
+                "П",
+                "К",
+                "А"
+              ],
+              "bukvy": [
+                "П",
+                "З",
+                "С",
+                "К",
+                "А",
+                "Л",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ПАПА. Поможешь собрать?",
+              "otvet": [
+                "П",
+                "А",
+                "П",
+                "А"
+              ],
+              "bukvy": [
+                "П",
+                "С",
+                "П",
+                "О",
+                "А",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РАМА. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "А",
+                "М",
+                "А"
+              ],
+              "bukvy": [
+                "Ф",
+                "А",
+                "Р",
+                "А",
+                "М",
+                "Ю"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КУКЛА. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "У",
+                "К",
+                "Л",
+                "А"
+              ],
+              "bukvy": [
+                "К",
+                "А",
+                "У",
+                "Ч",
+                "М",
+                "Л",
+                "К"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово НИТКИ. Поможешь собрать?",
+              "otvet": [
+                "Н",
+                "И",
+                "Т",
+                "К",
+                "И"
+              ],
+              "bukvy": [
+                "И",
+                "М",
+                "Ё",
+                "И",
+                "К",
+                "Т",
+                "Н"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛУНА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "У",
+                "Н",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "Н",
+                "У",
+                "Л",
+                "Т",
+                "О"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЗИМА. Поможешь собрать?",
+              "otvet": [
+                "З",
+                "И",
+                "М",
+                "А"
+              ],
+              "bukvy": [
+                "Б",
+                "З",
+                "А",
+                "Ё",
+                "М",
+                "И"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово МИСКА. Поможешь собрать?",
+              "otvet": [
+                "М",
+                "И",
+                "С",
+                "К",
+                "А"
+              ],
+              "bukvy": [
+                "М",
+                "С",
+                "А",
+                "К",
+                "И",
+                "Ю",
+                "З"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово РЫБА. Поможешь собрать?",
+              "otvet": [
+                "Р",
+                "Ы",
+                "Б",
+                "А"
+              ],
+              "bukvy": [
+                "Ы",
+                "Р",
+                "Л",
+                "А",
+                "П",
+                "Б"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ТЫКВА. Поможешь собрать?",
+              "otvet": [
+                "Т",
+                "Ы",
+                "К",
+                "В",
+                "А"
+              ],
+              "bukvy": [
+                "К",
+                "В",
+                "Т",
+                "Ы",
+                "Р",
+                "Л",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово КРОТ. Поможешь собрать?",
+              "otvet": [
+                "К",
+                "Р",
+                "О",
+                "Т"
+              ],
+              "bukvy": [
+                "Ш",
+                "Т",
+                "Ф",
+                "К",
+                "О",
+                "Р"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово МУХА. Поможешь собрать?",
+              "otvet": [
+                "М",
+                "У",
+                "Х",
+                "А"
+              ],
+              "bukvy": [
+                "Х",
+                "У",
+                "Ж",
+                "Ё",
+                "М",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово ЛАПА. Поможешь собрать?",
+              "otvet": [
+                "Л",
+                "А",
+                "П",
+                "А"
+              ],
+              "bukvy": [
+                "В",
+                "П",
+                "А",
+                "Л",
+                "Б",
+                "А"
+              ],
+              "iz_istochnika": false
+            },
+            {
+              "golos": "{zver} ищет слово БАНКА. Поможешь собрать?",
+              "otvet": [
+                "Б",
+                "А",
+                "Н",
+                "К",
+                "А"
+              ],
+              "bukvy": [
+                "А",
+                "Э",
+                "Ё",
+                "Н",
+                "К",
+                "Б",
+                "А"
+              ],
+              "iz_istochnika": false
+            }
+          ]
+        },
+        {
+          "id": "ponimanie",
+          "imya": "Понимает прочитанное",
+          "opisanie_roditelyu": "Не просто читает, а понимает смысл",
+          "istochnik": "iPIPS: 47,8 % первоклассников читают, но без понимания",
+          "tip": "slovo_k_kartinke",
+          "zadaniya": [
+            {
+              "golos": "{zver} нарисовал{a} картинку. Какое слово про неё?",
+              "kartinka": "дом",
+              "vybor": [
+                "ЗОНТ",
+                "ЛИСА",
+                "ВОЛК",
+                "ДОМ",
+                "ФЛАГ"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "утка",
+              "vybor": [
+                "НОСОК",
+                "КОТ",
+                "ДОМ",
+                "РАК",
+                "УТКА"
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "шар",
+              "vybor": [
+                "КОТ",
+                "НОСОК",
+                "МЯЧ",
+                "ШАР",
+                "ИГЛА"
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "жук",
+              "vybor": [
+                "КОТ",
+                "НОСОК",
+                "ШАР",
+                "ФЛАГ",
+                "ЖУК"
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "белка",
+              "vybor": [
+                "МЯЧ",
+                "ДОМ",
+                "БЕЛКА",
+                "ЛУК",
+                "КОТ"
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "флаг",
+              "vybor": [
+                "ФЛАГ",
+                "САНИ",
+                "ИГЛА",
+                "ДОМ",
+                "МЯЧ"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "игла",
+              "vybor": [
+                "ИГЛА",
+                "МЯЧ",
+                "УТКА",
+                "РАК",
+                "АРБУЗ"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "сани",
+              "vybor": [
+                "БЕЛКА",
+                "САНИ",
+                "ИГЛА",
+                "АРБУЗ",
+                "ЗОНТ"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "лук",
+              "vybor": [
+                "ЛИСА",
+                "АРБУЗ",
+                "ЗОНТ",
+                "НОСОК",
+                "ЛУК"
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А про эту?",
+              "kartinka": "кот",
+              "vybor": [
+                "РАК",
+                "УТКА",
+                "ЛИСА",
+                "ИГЛА",
+                "КОТ"
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "predlozheniya",
+          "imya": "Читает предложение",
+          "opisanie_roditelyu": "Собирает и читает предложение из знакомых слов",
+          "tip": "sobrat",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "КОТ",
+                "ПИЛ",
+                "СОК"
+              ],
+              "bukvy": [
+                "ПИЛ",
+                "СОК",
+                "КОТ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "МАМА",
+                "МЫЛА",
+                "РАМУ"
+              ],
+              "bukvy": [
+                "РАМУ",
+                "МЫЛА",
+                "МАМА"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ЛИСА",
+                "ВИДИТ",
+                "РЫБУ"
+              ],
+              "bukvy": [
+                "ВИДИТ",
+                "РЫБУ",
+                "ЛИСА"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ЖУК",
+                "СЕЛ",
+                "НА",
+                "РОЗУ"
+              ],
+              "bukvy": [
+                "ЖУК",
+                "СЕЛ",
+                "НА",
+                "РОЗУ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "У",
+                "НАС",
+                "ЖИЛ",
+                "КОТ"
+              ],
+              "bukvy": [
+                "ЖИЛ",
+                "КОТ",
+                "У",
+                "НАС"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "МИША",
+                "ЛЕПИТ",
+                "КОМ"
+              ],
+              "bukvy": [
+                "ЛЕПИТ",
+                "МИША",
+                "КОМ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ПАПА",
+                "МЫЛ",
+                "РАМУ"
+              ],
+              "bukvy": [
+                "ПАПА",
+                "МЫЛ",
+                "РАМУ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "РЫБА",
+                "ПЛЫЛА",
+                "В",
+                "ТРАВЕ"
+              ],
+              "bukvy": [
+                "ПЛЫЛА",
+                "ТРАВЕ",
+                "В",
+                "РЫБА"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "МЫ",
+                "ГУЛЯЛИ",
+                "В",
+                "САДУ"
+              ],
+              "bukvy": [
+                "ГУЛЯЛИ",
+                "В",
+                "МЫ",
+                "САДУ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ПАПА",
+                "КУПИЛ",
+                "ШАР"
+              ],
+              "bukvy": [
+                "КУПИЛ",
+                "ПАПА",
+                "ШАР"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ДЕТИ",
+                "ИГРАЛИ",
+                "В",
+                "МЯЧ"
+              ],
+              "bukvy": [
+                "ДЕТИ",
+                "МЯЧ",
+                "В",
+                "ИГРАЛИ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "ЗИНА",
+                "КАЧАЛА",
+                "КУКЛУ"
+              ],
+              "bukvy": [
+                "КАЧАЛА",
+                "КУКЛУ",
+                "ЗИНА"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "НА",
+                "ЛУГУ",
+                "ГУЛЯЛИ",
+                "КОЗЫ"
+              ],
+              "bukvy": [
+                "ГУЛЯЛИ",
+                "КОЗЫ",
+                "НА",
+                "ЛУГУ"
+              ],
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} хочет сказать целое предложение. Поможешь собрать?",
+              "otvet": [
+                "У",
+                "НОРЫ",
+                "СИДЕЛ",
+                "КРОТ"
+              ],
+              "bukvy": [
+                "У",
+                "НОРЫ",
+                "КРОТ",
+                "СИДЕЛ"
+              ],
+              "iz_istochnika": true
+            }
+          ]
+        }
+      ]
+    },
+    "schet": {
+      "imya": "Счёт",
+      "stupeni": [
+        {
+          "id": "pereschet",
+          "imya": "Пересчитывает предметы",
+          "opisanie_roditelyu": "Считает до десяти по одному",
+          "istochnik": "ФОП 5–6 лет. Самая лёгкая и наименее прогностичная",
+          "tip": "poschitat",
+          "zadaniya": [
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 5,
+              "vybor": [
+                3,
+                5,
+                6,
+                7,
+                4
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 10,
+              "vybor": [
+                9,
+                10,
+                11,
+                12,
+                8
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 4,
+              "vybor": [
+                4,
+                3,
+                6,
+                2,
+                5
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 9,
+              "vybor": [
+                9,
+                7,
+                8,
+                11,
+                10
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 4,
+              "vybor": [
+                2,
+                5,
+                3,
+                6,
+                4
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 10,
+              "vybor": [
+                9,
+                11,
+                8,
+                10,
+                12
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 7,
+              "vybor": [
+                8,
+                6,
+                5,
+                7,
+                9
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 6,
+              "vybor": [
+                8,
+                5,
+                4,
+                7,
+                6
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 4,
+              "vybor": [
+                3,
+                2,
+                4,
+                6,
+                5
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 3,
+              "vybor": [
+                3,
+                1,
+                5,
+                4,
+                2
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 7,
+              "vybor": [
+                5,
+                9,
+                8,
+                7,
+                6
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 6,
+              "vybor": [
+                4,
+                6,
+                7,
+                8,
+                5
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 8,
+              "vybor": [
+                10,
+                6,
+                8,
+                9,
+                7
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 4,
+              "vybor": [
+                3,
+                2,
+                4,
+                5,
+                6
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 8,
+              "vybor": [
+                8,
+                6,
+                9,
+                7,
+                10
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 5,
+              "vybor": [
+                5,
+                3,
+                4,
+                6,
+                7
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 3,
+              "vybor": [
+                2,
+                1,
+                3,
+                5,
+                4
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 10,
+              "vybor": [
+                11,
+                8,
+                12,
+                10,
+                9
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "cifra_kolichestvo",
+          "imya": "Соотносит цифру и количество",
+          "opisanie_roditelyu": "Знает, сколько предметов прячется за цифрой",
+          "istochnik": "🎯 САМАЯ ПРОГНОСТИЧНАЯ ступень, r = 0,72 (исследование)",
+          "prioritet": true,
+          "tip": "cifra_k_kuchke",
+          "zadaniya": [
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 4,
+              "vybor": [
+                8,
+                10,
+                9,
+                4,
+                3
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 7,
+              "vybor": [
+                6,
+                9,
+                10,
+                7,
+                8
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 7,
+              "vybor": [
+                7,
+                1,
+                5,
+                6,
+                8
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 10,
+              "vybor": [
+                10,
+                4,
+                5,
+                2,
+                3
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 8,
+              "vybor": [
+                4,
+                8,
+                1,
+                3,
+                7
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 2,
+              "vybor": [
+                10,
+                2,
+                6,
+                3,
+                5
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 2,
+              "vybor": [
+                5,
+                2,
+                8,
+                7,
+                9
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 7,
+              "vybor": [
+                6,
+                4,
+                1,
+                2,
+                7
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 9,
+              "vybor": [
+                6,
+                5,
+                4,
+                9,
+                3
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 6,
+              "vybor": [
+                10,
+                6,
+                9,
+                3,
+                8
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 8,
+              "vybor": [
+                1,
+                7,
+                2,
+                6,
+                8
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 7,
+              "vybor": [
+                8,
+                7,
+                1,
+                9,
+                5
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 7,
+              "vybor": [
+                2,
+                7,
+                3,
+                6,
+                5
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 10,
+              "vybor": [
+                7,
+                1,
+                10,
+                6,
+                9
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 5,
+              "vybor": [
+                5,
+                9,
+                4,
+                10,
+                7
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 8,
+              "vybor": [
+                4,
+                1,
+                7,
+                8,
+                2
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 4,
+              "vybor": [
+                5,
+                10,
+                3,
+                4,
+                2
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "А где ровно столько орешков?",
+              "cifra": 5,
+              "vybor": [
+                8,
+                5,
+                6,
+                2,
+                3
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "bolshe_menshe",
+          "imya": "Сравнивает количество",
+          "opisanie_roditelyu": "Понимает, где больше, даже если предметы разного размера",
+          "istochnik": "Пиаже, конфликтное расположение",
+          "tip": "gde_bolshe",
+          "zadaniya": [
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                3,
+                2
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                8,
+                2
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                2,
+                6
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                7,
+                4
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                6,
+                8
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                3,
+                2
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                8,
+                5
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                3,
+                9
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                6,
+                7
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                6,
+                3
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                8,
+                4
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                9,
+                5
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                8,
+                4
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                9,
+                2
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                2,
+                8
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                3,
+                9
+              ],
+              "razmer": [
+                "krupnye",
+                "melkie"
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                9,
+                6
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Где орешков больше?",
+              "kuchki": [
+                8,
+                2
+              ],
+              "razmer": [
+                "melkie",
+                "krupnye"
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "schet_predmetami",
+          "imya": "Считает предметами",
+          "opisanie_roditelyu": "Решает пример, пересчитывая предметы. Нормальная ступень для шести лет",
+          "istochnik": "Baroody 1987 — counting all",
+          "tip": "ubrat_predmety",
+          "zadaniya": [
+            {
+              "predmet": "yagoda",
+              "golos": "У {zverya} было семь ягодок. Три {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 7,
+              "ubrat": 3,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "oreshek",
+              "golos": "У {zverya} было девять орешков. Два {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 9,
+              "ubrat": 2,
+              "otvet": 7,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "gribok",
+              "golos": "У {zverya} было шесть грибочков. Четыре {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 6,
+              "ubrat": 4,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "shishka",
+              "golos": "У {zverya} было шесть шишек. Две {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 6,
+              "ubrat": 2,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yabloko",
+              "golos": "У {zverya} было пять яблочек. Три {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 5,
+              "ubrat": 3,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yagoda",
+              "golos": "У {zverya} было девять ягодок. Шесть {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 9,
+              "ubrat": 6,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "oreshek",
+              "golos": "У {zverya} было шесть орешков. Пять {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 6,
+              "ubrat": 5,
+              "otvet": 1,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "gribok",
+              "golos": "У {zverya} было девять грибочков. Восемь {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 9,
+              "ubrat": 8,
+              "otvet": 1,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "shishka",
+              "golos": "У {zverya} было семь шишек. Шесть {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 7,
+              "ubrat": 6,
+              "otvet": 1,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yabloko",
+              "golos": "У {zverya} было девять яблочек. Шесть {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 9,
+              "ubrat": 6,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yagoda",
+              "golos": "У {zverya} было восемь ягодок. Две {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 8,
+              "ubrat": 2,
+              "otvet": 6,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "oreshek",
+              "golos": "У {zverya} было восемь орешков. Шесть {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 8,
+              "ubrat": 6,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "gribok",
+              "golos": "У {zverya} было восемь грибочков. Семь {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 8,
+              "ubrat": 7,
+              "otvet": 1,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "shishka",
+              "golos": "У {zverya} было восемь шишек. Шесть {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 8,
+              "ubrat": 6,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yabloko",
+              "golos": "У {zverya} было девять яблочек. Два {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 9,
+              "ubrat": 2,
+              "otvet": 7,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "yagoda",
+              "golos": "У {zverya} было шесть ягодок. Две {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 6,
+              "ubrat": 2,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "oreshek",
+              "golos": "У {zverya} было семь орешков. Два {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 7,
+              "ubrat": 2,
+              "otvet": 5,
+              "iz_istochnika": true
+            },
+            {
+              "predmet": "gribok",
+              "golos": "У {zverya} было пять грибочков. Два {on} съел{a}. Сколько осталось? Съеденные можно убрать пальцем",
+              "bylo": 5,
+              "ubrat": 2,
+              "otvet": 3,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "doschet_vpered",
+          "imya": "Досчитывает вперёд",
+          "opisanie_roditelyu": "От меньшего числа считает до большего. Даётся легче, чем назад",
+          "istochnik": "Baroody — counting on. Counting up легче counting down",
+          "tip": "doschitat",
+          "zadaniya": [
+            {
+              "golos": "У {zverya} три морковки, а надо семь. Сколько добавить?",
+              "ot": 3,
+              "do": 7,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} три морковки, а надо семь. Сколько добавить?",
+              "ot": 3,
+              "do": 7,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} две морковки, а надо шесть. Сколько добавить?",
+              "ot": 2,
+              "do": 6,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} две морковки, а надо шесть. Сколько добавить?",
+              "ot": 2,
+              "do": 6,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} четыре морковки, а надо шесть. Сколько добавить?",
+              "ot": 4,
+              "do": 6,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} три морковки, а надо пять. Сколько добавить?",
+              "ot": 3,
+              "do": 5,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} четыре морковки, а надо семь. Сколько добавить?",
+              "ot": 4,
+              "do": 7,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} пять морковок, а надо девять. Сколько добавить?",
+              "ot": 5,
+              "do": 9,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} шесть морковок, а надо восемь. Сколько добавить?",
+              "ot": 6,
+              "do": 8,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} шесть морковок, а надо девять. Сколько добавить?",
+              "ot": 6,
+              "do": 9,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} две морковки, а надо шесть. Сколько добавить?",
+              "ot": 2,
+              "do": 6,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} четыре морковки, а надо семь. Сколько добавить?",
+              "ot": 4,
+              "do": 7,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} две морковки, а надо шесть. Сколько добавить?",
+              "ot": 2,
+              "do": 6,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} шесть морковок, а надо девять. Сколько добавить?",
+              "ot": 6,
+              "do": 9,
+              "otvet": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} пять морковок, а надо девять. Сколько добавить?",
+              "ot": 5,
+              "do": 9,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} пять морковок, а надо семь. Сколько добавить?",
+              "ot": 5,
+              "do": 7,
+              "otvet": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} шесть морковок, а надо десять. Сколько добавить?",
+              "ot": 6,
+              "do": 10,
+              "otvet": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "У {zverya} две морковки, а надо четыре. Сколько добавить?",
+              "ot": 2,
+              "do": 4,
+              "otvet": 2,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "bez_opory",
+          "imya": "Считает в уме",
+          "opisanie_roditelyu": "Решает пример без предметов перед глазами",
+          "istochnik": "Baroody — retrieval",
+          "tip": "primer",
+          "zadaniya": [
+            {
+              "golos": "Сколько будет девять без одного?",
+              "primer": "9 − 1",
+              "vybor": [
+                4,
+                3,
+                8,
+                2,
+                10
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять и три?",
+              "primer": "5 + 3",
+              "vybor": [
+                1,
+                2,
+                11,
+                8,
+                3
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь без четырёх?",
+              "primer": "8 − 4",
+              "vybor": [
+                4,
+                1,
+                9,
+                8,
+                7
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять без семи?",
+              "primer": "9 − 7",
+              "vybor": [
+                8,
+                4,
+                3,
+                2,
+                11
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять и четыре?",
+              "primer": "5 + 4",
+              "vybor": [
+                1,
+                9,
+                10,
+                5,
+                4
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и три?",
+              "primer": "6 + 3",
+              "vybor": [
+                9,
+                1,
+                6,
+                2,
+                11
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять без четырёх?",
+              "primer": "5 − 4",
+              "vybor": [
+                1,
+                8,
+                10,
+                2,
+                5
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и два?",
+              "primer": "6 + 2",
+              "vybor": [
+                2,
+                8,
+                1,
+                7,
+                10
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет четыре и два?",
+              "primer": "4 + 2",
+              "vybor": [
+                5,
+                3,
+                6,
+                2,
+                9
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять без двух?",
+              "primer": "5 − 2",
+              "vybor": [
+                5,
+                10,
+                11,
+                1,
+                3
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет семь без пяти?",
+              "primer": "7 − 5",
+              "vybor": [
+                11,
+                2,
+                6,
+                4,
+                7
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь без шести?",
+              "primer": "8 − 6",
+              "vybor": [
+                2,
+                6,
+                4,
+                10,
+                3
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять и четыре?",
+              "primer": "5 + 4",
+              "vybor": [
+                6,
+                2,
+                9,
+                4,
+                11
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет пять без четырёх?",
+              "primer": "5 − 4",
+              "vybor": [
+                8,
+                6,
+                1,
+                5,
+                7
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет четыре и четыре?",
+              "primer": "4 + 4",
+              "vybor": [
+                8,
+                10,
+                7,
+                11,
+                3
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет четыре и два?",
+              "primer": "4 + 2",
+              "vybor": [
+                9,
+                10,
+                2,
+                1,
+                6
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть без одного?",
+              "primer": "6 − 1",
+              "vybor": [
+                10,
+                5,
+                8,
+                3,
+                4
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и три?",
+              "primer": "6 + 3",
+              "vybor": [
+                11,
+                9,
+                2,
+                4,
+                6
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет три и три?",
+              "primer": "3 + 3",
+              "vybor": [
+                6,
+                3,
+                9,
+                8,
+                4
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет четыре и пять?",
+              "primer": "4 + 5",
+              "vybor": [
+                9,
+                4,
+                11,
+                2,
+                8
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "sostav_chisla",
+          "imya": "Знает состав числа",
+          "opisanie_roditelyu": "Понимает, из каких двух чисел складывается десять",
+          "istochnik": "ФОП. ⚠️ Стандартизованного задания с нормой нет",
+          "tip": "sobrat_chislo",
+          "zadaniya": [
+            {
+              "golos": "Какие две кучки вместе дают восемь орешков?",
+              "cel": 8,
+              "vybor": [
+                [
+                  7,
+                  1
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  9,
+                  5
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ]
+              ],
+              "verno": 0,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают семь орешков?",
+              "cel": 7,
+              "vybor": [
+                [
+                  4,
+                  9
+                ],
+                [
+                  9,
+                  2
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  6,
+                  9
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают восемь орешков?",
+              "cel": 8,
+              "vybor": [
+                [
+                  7,
+                  8
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  2,
+                  3
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают семь орешков?",
+              "cel": 7,
+              "vybor": [
+                [
+                  5,
+                  3
+                ],
+                [
+                  2,
+                  9
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  4,
+                  9
+                ]
+              ],
+              "verno": 3,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают девять орешков?",
+              "cel": 9,
+              "vybor": [
+                [
+                  8,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  9
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  6,
+                  1
+                ]
+              ],
+              "verno": 0,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают семь орешков?",
+              "cel": 7,
+              "vybor": [
+                [
+                  8,
+                  5
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  2,
+                  8
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают десять орешков?",
+              "cel": 10,
+              "vybor": [
+                [
+                  5,
+                  6
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  8,
+                  7
+                ]
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают семь орешков?",
+              "cel": 7,
+              "vybor": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  5,
+                  7
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают девять орешков?",
+              "cel": 9,
+              "vybor": [
+                [
+                  3,
+                  1
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  4,
+                  1
+                ]
+              ],
+              "verno": 3,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают семь орешков?",
+              "cel": 7,
+              "vybor": [
+                [
+                  9,
+                  2
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  9
+                ]
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают девять орешков?",
+              "cel": 9,
+              "vybor": [
+                [
+                  6,
+                  4
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              "verno": 3,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают десять орешков?",
+              "cel": 10,
+              "vybor": [
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают восемь орешков?",
+              "cel": 8,
+              "vybor": [
+                [
+                  3,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  8,
+                  8
+                ],
+                [
+                  9,
+                  4
+                ]
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают десять орешков?",
+              "cel": 10,
+              "vybor": [
+                [
+                  8,
+                  4
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  9,
+                  7
+                ],
+                [
+                  8,
+                  7
+                ]
+              ],
+              "verno": 1,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают восемь орешков?",
+              "cel": 8,
+              "vybor": [
+                [
+                  6,
+                  9
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  3,
+                  7
+                ]
+              ],
+              "verno": 2,
+              "iz_istochnika": false
+            },
+            {
+              "golos": "Какие две кучки вместе дают восемь орешков?",
+              "cel": 8,
+              "vybor": [
+                [
+                  3,
+                  9
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  9,
+                  1
+                ]
+              ],
+              "verno": 3,
+              "iz_istochnika": false
+            }
+          ]
+        },
+        {
+          "id": "do_dvadcati",
+          "imya": "Считает до двадцати",
+          "opisanie_roditelyu": "Пересчитывает и узнаёт числа второго десятка",
+          "tip": "poschitat",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 20,
+              "vybor": [
+                19,
+                15,
+                17,
+                12,
+                20
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 14,
+              "vybor": [
+                15,
+                19,
+                20,
+                14,
+                13
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 12,
+              "vybor": [
+                18,
+                12,
+                19,
+                11,
+                16
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 16,
+              "vybor": [
+                15,
+                11,
+                13,
+                16,
+                14
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 20,
+              "vybor": [
+                19,
+                14,
+                16,
+                20,
+                18
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 16,
+              "vybor": [
+                15,
+                16,
+                11,
+                19,
+                14
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 17,
+              "vybor": [
+                16,
+                13,
+                19,
+                17,
+                20
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 17,
+              "vybor": [
+                17,
+                18,
+                15,
+                12,
+                14
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 12,
+              "vybor": [
+                12,
+                20,
+                13,
+                15,
+                17
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 16,
+              "vybor": [
+                11,
+                17,
+                18,
+                15,
+                16
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 12,
+              "vybor": [
+                17,
+                12,
+                15,
+                20,
+                19
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 12,
+              "vybor": [
+                11,
+                19,
+                14,
+                18,
+                12
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 16,
+              "vybor": [
+                11,
+                14,
+                19,
+                17,
+                16
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 18,
+              "vybor": [
+                18,
+                15,
+                20,
+                11,
+                14
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 17,
+              "vybor": [
+                18,
+                17,
+                15,
+                11,
+                20
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} ягодки. Сколько их?",
+              "predmet": "yagoda",
+              "skolko": 17,
+              "vybor": [
+                18,
+                17,
+                15,
+                12,
+                14
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} орешки. Сколько их?",
+              "predmet": "oreshek",
+              "skolko": 11,
+              "vybor": [
+                20,
+                14,
+                11,
+                15,
+                17
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} грибочки. Сколько их?",
+              "predmet": "gribok",
+              "skolko": 11,
+              "vybor": [
+                20,
+                13,
+                11,
+                14,
+                16
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} шишки. Сколько их?",
+              "predmet": "shishka",
+              "skolko": 19,
+              "vybor": [
+                12,
+                19,
+                18,
+                20,
+                13
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "{zver} собрал{a} яблочки. Сколько их?",
+              "predmet": "yabloko",
+              "skolko": 17,
+              "vybor": [
+                15,
+                16,
+                19,
+                14,
+                17
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            }
+          ]
+        },
+        {
+          "id": "cherez_desyatok",
+          "imya": "Складывает через десяток",
+          "opisanie_roditelyu": "Считает 8 + 5, где сумма больше десяти",
+          "tip": "vybor",
+          "prioritet": false,
+          "zadaniya": [
+            {
+              "golos": "Сколько будет девять и девять?",
+              "primer": "9 + 9",
+              "vybor": [
+                11,
+                20,
+                12,
+                18,
+                17
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и шесть?",
+              "primer": "6 + 6",
+              "vybor": [
+                12,
+                16,
+                20,
+                11,
+                17
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять и три?",
+              "primer": "9 + 3",
+              "vybor": [
+                20,
+                12,
+                16,
+                14,
+                18
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет семь и семь?",
+              "primer": "7 + 7",
+              "vybor": [
+                11,
+                12,
+                14,
+                20,
+                18
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и пять?",
+              "primer": "8 + 5",
+              "vybor": [
+                13,
+                17,
+                12,
+                15,
+                16
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и восемь?",
+              "primer": "8 + 8",
+              "vybor": [
+                16,
+                20,
+                12,
+                11,
+                17
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять и восемь?",
+              "primer": "9 + 8",
+              "vybor": [
+                17,
+                19,
+                13,
+                11,
+                20
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять и два?",
+              "primer": "9 + 2",
+              "vybor": [
+                15,
+                16,
+                14,
+                11,
+                12
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять и семь?",
+              "primer": "9 + 7",
+              "vybor": [
+                20,
+                17,
+                19,
+                13,
+                16
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет семь и четыре?",
+              "primer": "7 + 4",
+              "vybor": [
+                19,
+                11,
+                13,
+                17,
+                18
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет девять и пять?",
+              "primer": "9 + 5",
+              "vybor": [
+                12,
+                20,
+                14,
+                18,
+                13
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет семь и шесть?",
+              "primer": "7 + 6",
+              "vybor": [
+                13,
+                18,
+                15,
+                12,
+                11
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и шесть?",
+              "primer": "8 + 6",
+              "vybor": [
+                17,
+                14,
+                11,
+                20,
+                13
+              ],
+              "verno": 1,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и три?",
+              "primer": "8 + 3",
+              "vybor": [
+                11,
+                14,
+                12,
+                20,
+                18
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет семь и семь?",
+              "primer": "7 + 7",
+              "vybor": [
+                16,
+                15,
+                11,
+                20,
+                14
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и восемь?",
+              "primer": "6 + 8",
+              "vybor": [
+                17,
+                18,
+                11,
+                14,
+                12
+              ],
+              "verno": 3,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и девять?",
+              "primer": "8 + 9",
+              "vybor": [
+                17,
+                18,
+                14,
+                19,
+                12
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет восемь и семь?",
+              "primer": "8 + 7",
+              "vybor": [
+                18,
+                14,
+                15,
+                19,
+                12
+              ],
+              "verno": 2,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и восемь?",
+              "primer": "6 + 8",
+              "vybor": [
+                14,
+                20,
+                17,
+                19,
+                18
+              ],
+              "verno": 0,
+              "iz_istochnika": true
+            },
+            {
+              "golos": "Сколько будет шесть и девять?",
+              "primer": "6 + 9",
+              "vybor": [
+                19,
+                20,
+                18,
+                12,
+                15
+              ],
+              "verno": 4,
+              "iz_istochnika": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,202 @@
+[
+ {
+  "kod": "pereschet_14_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_14_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_14_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_15_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_15_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_15_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_15_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_15_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_16_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_16_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_16_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_16_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_16_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_17_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_17_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_17_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_17_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "pereschet_17_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_0",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_1",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_2",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_3",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_4",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_5",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_6",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_7",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_8",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_9",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_10",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_11",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_12",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_13",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_14",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_15",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_16",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "cifra_kolichestvo_17",
+  "tekst": "А где ровно столько орешков?",
+  "slov": 5
+ },
+ {
+  "kod": "bolshe_menshe_0",
+  "tekst": "Где орешков больше?",
+  "slov": 3
+ },
+ {
+  "kod": "bolshe_menshe_1",
+  "tekst": "Где орешков больше?",
+  "slov": 3
+ },
+ {
+  "kod": "bolshe_menshe_2",
+  "tekst": "Где орешков больше?",
+  "slov": 3
+ },
+ {
+  "kod": "bolshe_menshe_3",
+  "tekst": "Где орешков больше?",
+  "slov": 3
+ }
+]

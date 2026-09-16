@@ -1,0 +1,92 @@
+[
+ {
+  "kod": "pohozhie_bukvy_0_lisa",
+  "tekst": "Лисичка путает эти буквы. Где тут Б?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_0_belka",
+  "tekst": "Белочка путает эти буквы. Где тут Б?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_0_medved",
+  "tekst": "Мишка путает эти буквы. Где тут Б?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_1",
+  "tekst": "Шар. Шар. Какая буква первая?",
+  "slov": 5
+ },
+ {
+  "kod": "pohozhie_bukvy_2",
+  "tekst": "Игла. Игла. Какая буква первая?",
+  "slov": 5
+ },
+ {
+  "kod": "pohozhie_bukvy_3_yozh",
+  "tekst": "Ёжик путает эти буквы. Где тут П?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_3_zayats",
+  "tekst": "Зайчик путает эти буквы. Где тут П?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_3_lisa",
+  "tekst": "Лисичка путает эти буквы. Где тут П?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_3_belka",
+  "tekst": "Белочка путает эти буквы. Где тут П?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_3_medved",
+  "tekst": "Мишка путает эти буквы. Где тут П?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_4_yozh",
+  "tekst": "Ёжик путает эти буквы. Где тут Ц?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_4_zayats",
+  "tekst": "Зайчик путает эти буквы. Где тут Ц?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_4_lisa",
+  "tekst": "Лисичка путает эти буквы. Где тут Ц?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_4_belka",
+  "tekst": "Белочка путает эти буквы. Где тут Ц?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_4_medved",
+  "tekst": "Мишка путает эти буквы. Где тут Ц?",
+  "slov": 7
+ },
+ {
+  "kod": "pohozhie_bukvy_5",
+  "tekst": "Рак. Рак. Какая буква первая?",
+  "slov": 5
+ },
+ {
+  "kod": "pohozhie_bukvy_6",
+  "tekst": "Зонт. Зонт. Какая буква первая?",
+  "slov": 5
+ },
+ {
+  "kod": "pohozhie_bukvy_7",
+  "tekst": "Мяч. Мяч. Какая буква первая?",
+  "slov": 5
+ }
+]

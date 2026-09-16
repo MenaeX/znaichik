@@ -1,0 +1,182 @@
+[
+ {
+  "kod": "znakomstvo_0_yozh",
+  "tekst": "Привет! Я Ёжик. Покажи самую большую ягодку, и пойдём играть",
+  "slov": 10
+ },
+ {
+  "kod": "znakomstvo_0_zayats",
+  "tekst": "Привет! Я Зайчик. Покажи самую большую ягодку, и пойдём играть",
+  "slov": 10
+ },
+ {
+  "kod": "znakomstvo_0_lisa",
+  "tekst": "Привет! Я Лисичка. Покажи самую большую ягодку, и пойдём играть",
+  "slov": 10
+ },
+ {
+  "kod": "znakomstvo_0_belka",
+  "tekst": "Привет! Я Белочка. Покажи самую большую ягодку, и пойдём играть",
+  "slov": 10
+ },
+ {
+  "kod": "znakomstvo_0_medved",
+  "tekst": "Привет! Я Мишка. Покажи самую большую ягодку, и пойдём играть",
+  "slov": 10
+ },
+ {
+  "kod": "nachalnyy_glasnyy_0",
+  "tekst": "Аист. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_1",
+  "tekst": "Арка. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_2",
+  "tekst": "Астра. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_3",
+  "tekst": "Утка. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_4",
+  "tekst": "Ухо. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_5",
+  "tekst": "Утро. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_6",
+  "tekst": "Облако. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_7",
+  "tekst": "Ослик. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_8",
+  "tekst": "Обруч. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_9",
+  "tekst": "Ива. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_10",
+  "tekst": "Иглы. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "nachalnyy_glasnyy_11",
+  "tekst": "Ирис. С какого звука начинается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_0",
+  "tekst": "Дом. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_1",
+  "tekst": "Дым. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_2",
+  "tekst": "Нос. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_3",
+  "tekst": "Лес. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_4",
+  "tekst": "Мох. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_5",
+  "tekst": "Шар. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_6",
+  "tekst": "Сыр. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_7",
+  "tekst": "Камыш. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_8",
+  "tekst": "Малыш. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_9",
+  "tekst": "Стол. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_10",
+  "tekst": "Пол. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "konechnyy_soglasnyy_11",
+  "tekst": "Слон. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_0",
+  "tekst": "Мак. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_1",
+  "tekst": "Сок. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_2",
+  "tekst": "Лук. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_3",
+  "tekst": "Кот. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_4",
+  "tekst": "Кит. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_5",
+  "tekst": "Бант. На какой звук кончается?",
+  "slov": 5
+ },
+ {
+  "kod": "vzryvnoy_v_konce_6",
+  "tekst": "Суп. На какой звук кончается?",
+  "slov": 5
+ }
+]

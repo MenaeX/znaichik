@@ -1,0 +1,192 @@
+[
+ {
+  "kod": "do_dvadcati_15_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_15_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_15_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_15_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_15_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_16_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_16_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_16_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_16_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_16_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_17_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_17_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_17_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_17_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_17_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_18_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_18_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_18_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_18_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_18_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_19_yozh",
+  "tekst": "Ёжик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_19_zayats",
+  "tekst": "Зайчик собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_19_lisa",
+  "tekst": "Лисичка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_19_belka",
+  "tekst": "Белочка собрала орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "do_dvadcati_19_medved",
+  "tekst": "Мишка собрал орешки. Сколько их?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_0",
+  "tekst": "Сколько будет девять и девять?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_1",
+  "tekst": "Сколько будет шесть и шесть?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_2",
+  "tekst": "Сколько будет девять и три?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_3",
+  "tekst": "Сколько будет семь и семь?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_4",
+  "tekst": "Сколько будет восемь и пять?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_5",
+  "tekst": "Сколько будет восемь и восемь?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_6",
+  "tekst": "Сколько будет девять и восемь?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_7",
+  "tekst": "Сколько будет девять и два?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_8",
+  "tekst": "Сколько будет девять и семь?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_9",
+  "tekst": "Сколько будет семь и четыре?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_10",
+  "tekst": "Сколько будет девять и пять?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_11",
+  "tekst": "Сколько будет семь и шесть?",
+  "slov": 5
+ },
+ {
+  "kod": "cherez_desyatok_12",
+  "tekst": "Сколько будет восемь и шесть?",
+  "slov": 5
+ }
+]
