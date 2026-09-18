@@ -403,6 +403,27 @@ body{
 .itog-yagody{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:280px}
 .itog-yagody i{width:clamp(22px,3.4vw,34px);height:clamp(22px,3.4vw,34px);border-radius:50%;
   background:var(--yagoda);display:block}
+/* 🚨 Выключатель звука. Размер как у кнопок игры — не меньше 44 px,
+   иначе детский палец в неё не попадёт (правило проверок вёрстки). */
+.tishe{width:clamp(44px,7vw,52px);height:clamp(44px,7vw,52px);flex:0 0 auto;
+  display:grid;place-items:center;border:0;border-radius:50%;cursor:pointer;
+  background:var(--list-2);color:var(--tihiy);box-shadow:var(--ten);
+  margin-left:10px;transition:background .18s,color .18s}
+.tishe svg{width:60%;height:60%}
+.tishe .krest{opacity:0;transition:opacity .18s}
+.tishe[aria-pressed="true"]{background:var(--yagoda);color:#fff}
+.tishe[aria-pressed="true"] .volny{opacity:0}
+.tishe[aria-pressed="true"] .krest{opacity:1}
+/* Знаки в примере тише самих чисел, вопрос — ярче: ребёнок должен видеть,
+   куда встанет его ответ. */
+.primer-znak{color:var(--tihiy);font-weight:700}
+.primer-vopros{color:var(--yantar);display:inline-block;min-width:1.1em;
+  animation:vopros-zhdet 1.6s ease-in-out infinite}
+@keyframes vopros-zhdet{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+/* Пустое место в корзине цели: контур ягоды, который предстоит заполнить. */
+.korzina-yagody i.mesto{background:transparent;border:2px dashed rgba(194,85,72,.55);
+  opacity:0;transform:scale(.6);transition:opacity .25s,transform .25s}
+.korzina-yagody i.mesto.vidno{opacity:1;transform:scale(1)}
 .itog-chislo{font-family:Nunito;font-weight:900;font-size:clamp(44px,8vw,76px);line-height:1}
 .itog-podpis{font-family:Comfortaa;font-weight:600;font-size:16px;color:var(--tihiy)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -418,6 +439,18 @@ body{
   <div class="verh">
     <div class="put" id="put"></div>
     <div class="korzinka pusto" id="korzinka" aria-label="Собрано ягод"><i></i><span class="schet">0</span></div>
+    <!-- 🚨 Выключатель звука ВСЕГДА НА ВИДУ, а не во «взрослом» углу.
+         Живая проба 18.09: «даже звук не выключить никак». Игра ведёт
+         ребёнка голосом, и бывают места, где шуметь нельзя. -->
+    <button class="tishe" id="tishe" aria-label="Выключить звук" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <path class="volny" d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path class="volny" d="M19 5a9 9 0 0 1 0 14"/>
+        <path class="krest" d="M22 9l-6 6M16 9l6 6"/>
+      </svg>
+    </button>
   </div>
   <div class="geroy">
     <div class="zver zhdet" id="zver"></div>
@@ -568,7 +601,11 @@ function dobavitYagodu(){
   k.classList.remove('pusto');
   const i = document.createElement('i');
   k.insertBefore(i, k.querySelector('.schet'));
-  k.querySelector('.schet').textContent = yagod;
+  /* 🚨 Показываем «собрано из цели», а не голое число. Ребёнок должен
+     видеть, сколько осталось, иначе конец захода выглядит внезапным
+     (живая проба 18.09: «почему 17, почему всё?»). */
+  const cel = (L && L.pravila && L.pravila.zadaniy_v_zahode) || 15;
+  k.querySelector('.schet').textContent = `${yagod} из ${cel}`;
   // больше пяти значков не показываем — иначе полоса разъедется
   const znachki = k.querySelectorAll('i');
   if (znachki.length > 5) znachki[0].remove();
@@ -644,7 +681,19 @@ let nomerZvuka = 0;
    Фраза перебивала сама себя на полуслове. Теперь и повтор, и подсказка
    отсчитываются от КОНЦА звучания. Если файла нет или браузер не пустил
    звук — зовём сразу, иначе экран замрёт навсегда. */
+/* 🚨 Выключенный звук — состояние игры, а не громкость динамика.
+   При выключенном звуке реплики НЕ ИГРАЮТ, а переходы идут по своему
+   минимуму: иначе экран замрёт, ожидая конца того, что не звучит. */
+let zvuk_vyklyuchen = false;
+try { zvuk_vyklyuchen = localStorage.getItem('znaichik_tishina') === 'da'; }
+catch(e){}
+
 function skazat(kod, kogdaKonchit){
+  if (zvuk_vyklyuchen){
+    if (igraet){ try{ igraet.pause(); }catch(e){} }
+    if (kogdaKonchit) kogdaKonchit();
+    return null;
+  }
   if (igraet){ try{ igraet.pause(); igraet.currentTime = 0; }catch(e){} igraet.onended = null; }
   const a = zvuk(kod);
   if (!a){ if (kogdaKonchit) kogdaKonchit(); return null; }
@@ -739,9 +788,18 @@ function pokazatPodskazku(){
 }
 
 /* ── старт ────────────────────────────────────────────────────── */
+/* Кнопка должна с первого кадра показывать сохранённый выбор. */
+function pokazatSostoyanieZvuka(){
+  const b = el('tishe');
+  if (!b) return;
+  b.setAttribute('aria-pressed', zvuk_vyklyuchen ? 'true' : 'false');
+  b.setAttribute('aria-label', zvuk_vyklyuchen ? 'Включить звук' : 'Выключить звук');
+}
+
 async function zagruzit(){
   const r = await fetch('./lestnica.json');
   L = await r.json();
+  pokazatSostoyanieZvuka();
   zamer = sozdatZamer(L);
   el('zveri-vybor').innerHTML = L.zveri.map(z =>
     `<button class="zver-karta" data-z="${z}" aria-label="Выбрать">${ZVERI[z]}</button>`).join('');
@@ -810,6 +868,12 @@ function pokazat(){
   if (z.stupen.tip !== 'nemaya'){
     /* отсчёт повтора и подсказки — от конца реплики, не от начала */
     skazat(kod, () => zapustitPovtor(kod));
+  }
+  /* Один раз за заход, перед самым первым заданием, объявляем цель. */
+  if (!obyavili_cel){
+    obyavili_cel = true;
+    obyavitCel(() => pokazat());
+    return;
   }
   perehodIdyot = false;                   // новый экран — снова принимаем ответы
   nachato = performance.now(); popytok = 0; podskazok = 0; sobrano = [];
@@ -962,7 +1026,17 @@ const OBRAZCY = {
   /* Пересчёт: зверь считает вслух, трогая каждый орешек по очереди —
      соотнесение один к одному, без него счёт остаётся заучиванием. */
   pereschet(z, dalshe){
-    const skolko = z.zadanie.skolko;
+    /* 🚨 Считаем ДРУГОЕ количество, а не то, которое сейчас спросят.
+       Живая проба 18.09: «показывается цифра 10, потом идёт счёт до 10,
+       а потом написано, сколько всего — сразу виден ответ». Показ
+       на том же числе превращает задание в переписывание: ребёнок
+       не считает, а вспоминает только что услышанное.
+       Приём тот же, что у схемы слова: там механику объясняют
+       на постороннем слове КОТ, а не на загаданном. */
+    const zagadano = z.zadanie.skolko;
+    const skolko = zagadano <= 3 ? zagadano + 2
+                 : zagadano >= 9 ? zagadano - 2
+                 : zagadano - 1;
     const d = document.createElement('div');
     d.className = 'obrazec';
     d.innerHTML = `<div class="obr-podpis">Считаем вместе</div>
@@ -972,7 +1046,7 @@ const OBRAZCY = {
     const kucha = d.querySelector('.obr-kucha');
     const orehi = [...kucha.querySelectorAll('i')];
     pokazatSchyot(kucha, orehi, () => {
-      el('podpis').textContent = `Всего ${skolko}`;
+      el('podpis').textContent = `Здесь ${skolko}. Теперь сосчитай сам`;
       dalshe();
     });
   },
@@ -1084,7 +1158,12 @@ const OBRAZCY = {
      прогностичная ступень по данным на русских первоклассниках (iPIPS,
      связь с итогом года 0,72) — показываем её особенно наглядно. */
   cifra_kolichestvo(z, dalshe){
-    const n = z.zadanie.cifra;
+    /* 🚨 Показываем ДРУГУЮ цифру, не загаданную: иначе ответ виден
+       до вопроса (живая проба 18.09). */
+    const zagadano = z.zadanie.cifra;
+    const n = zagadano <= 3 ? zagadano + 2
+            : zagadano >= 9 ? zagadano - 2
+            : zagadano - 1;
     const d = document.createElement('div');
     d.className = 'obrazec';
     d.innerHTML = `<div class="obr-podpis">Цифра и столько же орешков</div>
@@ -1291,6 +1370,42 @@ function pokazatDomiki(dalshe){
     kogda += derzhim + 120;
   });
   cherezObrazec(() => { el('stol').innerHTML = ''; dalshe(); }, kogda + 700);
+}
+
+/* 🚨 Цель захода объявляется ВСЛУХ и показывается корзиной с пустыми
+   местами. Ребёнок не читает, поэтому число называется голосом, а сколько
+   осталось — видно по корзине. Без этого конец захода выглядит внезапным:
+   «тут 17 ягодок, почему 17 почему всё?» (живая проба 18.09). */
+let obyavili_cel = false;
+
+function obyavitCel(dalshe){
+  const cel = (L && L.pravila && L.pravila.zadaniy_v_zahode) || 15;
+  const d = document.createElement('div');
+  d.className = 'pravila itog-zahoda';
+  d.innerHTML = `<div class="obr-podpis">Сегодня собираем столько</div>
+    <div class="korzina" id="korzina-cel">
+      <svg viewBox="0 0 200 130" class="korzina-svg" aria-hidden="true">
+        <path d="M60 44 Q100 -2 140 44" fill="none" stroke="#A96C2C" stroke-width="9"/>
+        <path d="M22 46 L178 46 L164 120 Q100 128 36 120 Z" fill="#C8873F"/>
+        <path d="M22 46 L178 46 L175 58 L25 58 Z" fill="#A96C2C"/>
+      </svg>
+      <div class="korzina-yagody" id="korzina-cel-mesta"></div>
+    </div>`;
+  el('stol').appendChild(d);
+  el('podpis').textContent = `Соберём ${cel} ягодок — и на сегодня всё`;
+
+  /* Пустые места вспыхивают по одному: видно, сколько предстоит. */
+  const gnezdo = el('korzina-cel-mesta');
+  for (let i = 0; i < cel; i++){
+    const y = document.createElement('i');
+    y.className = 'mesto';
+    gnezdo.appendChild(y);
+    cherezObrazec(() => y.classList.add('vidno'), 70 * i);
+  }
+  skazatIDalshe('cel_zahoda', 70 * cel + 900, () => {
+    el('stol').innerHTML = '';
+    dalshe();
+  });
 }
 
 /* ── как рисуется каждый тип задания ──────────────────────────── */
@@ -1537,7 +1652,15 @@ const RISUEM = {
   doschitat(z){
     const c=document.createElement('div');
     c.style.cssText='text-align:center;font-family:Nunito;font-weight:900;font-size:clamp(30px,5vw,50px)';
-    c.textContent = `${z.zadanie.ot} → ${z.zadanie.do}`;
+    /* 🚨 Запись примером, а не стрелкой. Живая проба 18.09: «3 стрелочка 7,
+       нужно записать как 3 + ? = 7, так понятнее». Стрелка для взрослого
+       очевидна, а шестилетке она ничего не говорит: он видит два числа
+       и не понимает, что между ними происходит. Знак «плюс» и вопрос
+       на месте ответа читаются сразу, и это же запись, которую он встретит
+       в школе. */
+    c.innerHTML = `${z.zadanie.ot} <span class="primer-znak">+</span> ` +
+                  `<span class="primer-vopros">?</span> ` +
+                  `<span class="primer-znak">=</span> ${z.zadanie.do}`;
     el('stol').appendChild(c);
     const d=document.createElement('div'); d.className='varianty';
     [z.zadanie.otvet, z.zadanie.otvet+1, Math.max(1,z.zadanie.otvet-1)].forEach(n=>{
@@ -1799,6 +1922,39 @@ function sobratKartu(){
    не видно ничего, а экраны обязаны проверяться замером, а не глазами.
    Наружу отдаём ТОЛЬКО отрисовку: ни замера, ни прогресса ребёнка. */
 window.PROVERKA = {OBRAZCY, RISUEM};
+
+/* Выключатель: гасит текущую реплику, отсчёты повтора и запоминает выбор. */
+el('tishe').onclick = () => {
+  zvuk_vyklyuchen = !zvuk_vyklyuchen;
+  el('tishe').setAttribute('aria-pressed', zvuk_vyklyuchen ? 'true' : 'false');
+  el('tishe').setAttribute('aria-label',
+    zvuk_vyklyuchen ? 'Включить звук' : 'Выключить звук');
+  try { localStorage.setItem('znaichik_tishina', zvuk_vyklyuchen ? 'da' : 'net'); }
+  catch(e){}
+  if (zvuk_vyklyuchen){
+    if (igraet){ try{ igraet.pause(); igraet.currentTime = 0; }catch(e){} }
+    ostanovitPovtor();
+  } else if (tekushee){
+    const k = kodRepliki(tekushee);
+    skazat(k, () => zapustitPovtor(k));
+  }
+};
+
+/* 🚨 Ушли с экрана — замолкаем. Живая проба 18.09: «я даже телефон
+   выключаю, она все равно болтает». Таймер автоповтора тикает и при
+   погашенном экране, поэтому мало остановить звук — надо снять отсчёты.
+   Вернулись — ничего не возобновляем само: пусть ребёнок нажмёт
+   «Послушать», иначе игра заговорит в кармане. */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden){
+    if (igraet){ try{ igraet.pause(); }catch(e){} }
+    ostanovitPovtor();
+  }
+});
+window.addEventListener('pagehide', () => {
+  if (igraet){ try{ igraet.pause(); }catch(e){} }
+  ostanovitPovtor();
+});
 
 el('slushat').onclick = () => {
   /* 🚨 На финале tekushee остаётся от последнего задания, и кнопка
