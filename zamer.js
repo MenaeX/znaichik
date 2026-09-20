@@ -17,7 +17,7 @@ function prochitat(){
     const d = JSON.parse(localStorage.getItem(KLYUCH)) || {};
     return { sobytiya: d.sobytiya || [], zahodov: d.zahodov || 0,
              uroven: d.uroven || {}, uroven_kogda: d.uroven_kogda || {},
-             proydeno: d.proydeno || {} };
+             vozrast: d.vozrast || 0, proydeno: d.proydeno || {} };
   }
   catch(e){ return { sobytiya: [], zahodov: 0, uroven: {}, proydeno: {} }; }
 }
@@ -154,24 +154,71 @@ export function sozdatZamer(L){
             return Math.max(0, Math.min(spisok.length - 1, nazvan - 1));
         }
 
+        const v_kramkah = i => Math.max(0, Math.min(spisok.length - 1, i));
+        const nomer = id => spisok.findIndex(x => x.stupen.id === id);
+        const chisto = e => e.verno && !e.podskazok;
+
         if (!svoi.length){
           /* 🚨 Старт от уровня, который назвал взрослый, и на ступень НИЖЕ:
              первый успех должен случиться до первого затруднения (Prodigy
              стартует на класс ниже заявленного). Взрослый не назвал —
-             начинаем снизу. Ни одна разобранная программа не меряет
-             с чистого листа, всем нужна опорная точка от взрослого. */
+             берём возраст как ГРУБУЮ прикидку. Возраст знаний не означает
+             (Андрей, 19.09: «в 5 лет может быть больше, чем у 7-летнего»),
+             поэтому он и не назначает уровень, а только выбирает, откуда
+             начать поиск: ошибка тут стоит одного-двух заданий, потому что
+             дальше работает галоп. */
           const nazvan = P.uroven && P.uroven[kod];
-          if (typeof nazvan === 'number')
-            return Math.max(0, Math.min(spisok.length - 1, nazvan - 1));
+          if (typeof nazvan === 'number') return v_kramkah(nazvan - 1);
+          const let_ = P.vozrast || 0;
+          if (let_ >= 7) return v_kramkah(Math.round(spisok.length * 0.3));
+          if (let_ === 6) return v_kramkah(Math.round(spisok.length * 0.15));
           return 0;
         }
+
+        /* 🚨 ПОИСК ГРАНИЦЫ. Шаг ±1 — это обход лестницы, а не поиск:
+           при четырнадцати ступенях чтения и восьми заданиях на навык
+           за вечер ребёнок, читающий словами, добирался до своего потолка
+           к третьему заходу, а до того получал давно знакомое. Андрей
+           19.09: «не учить тому что знает или наоборот».
+
+           Вверх идём галопом (+1, +2, +4, +8), вниз — только делением
+           вилки пополам. Несимметрично намеренно: промах вверх стоит
+           одного неверного ответа, промах вниз — череды провалов, а
+           лестница требует заканчивать заход посильным. */
+        const v_zahode = svoi.filter(e => e.zahod === P.zahodov);
+        if (!v_zahode.length){
+          /* Новый заход: начинаем от потолка прошлых — со ступени ВЫШЕ
+             взятой. Ребёнок за неделю подрос, и перепроверять снизу
+             всё, что он уже показал, значит тратить его вечер. */
+          let potolok = -1;
+          for (const e of svoi) if (chisto(e)) potolok = Math.max(potolok, nomer(e.stupen));
+          return v_kramkah(potolok + 1);
+        }
+
+        let vzyato = -1, ne_vzyato = spisok.length;
+        for (const e of v_zahode){
+          const i = nomer(e.stupen);
+          if (i < 0) continue;
+          if (chisto(e)) vzyato = Math.max(vzyato, i);
+          else ne_vzyato = Math.min(ne_vzyato, i);
+        }
+
+        if (vzyato + 1 < ne_vzyato){
+          if (ne_vzyato < spisok.length)
+            return v_kramkah(Math.floor((vzyato + ne_vzyato) / 2));   // сужаем вилку
+          /* Осечек ещё не было — потолок выше, шагаем всё шире. */
+          let podryad = 0;
+          for (let i = v_zahode.length - 1; i >= 0 && chisto(v_zahode[i]); i--) podryad++;
+          return v_kramkah(vzyato + Math.pow(2, Math.max(0, podryad - 1)));
+        }
+
+        /* Граница найдена: между «берёт» и «не берёт» пусто. Дальше
+           обычный шаг — держимся у границы и набираем наблюдения,
+           потому что вердикт ставится не с одного ответа. */
         const posledniy = svoi[svoi.length - 1];
-        const gde = spisok.findIndex(x => x.stupen.id === posledniy.stupen);
+        const gde = nomer(posledniy.stupen);
         if (gde < 0) return 0;
-        /* Верно и без подсказок — ступенька вверх. Ошибся — вниз, но не
-           ниже нуля: заканчивать заход надо посильным. */
-        const shag = (posledniy.verno && !posledniy.podskazok) ? 1 : -1;
-        return Math.max(0, Math.min(spisok.length - 1, gde + shag));
+        return v_kramkah(gde + (chisto(posledniy) ? 1 : -1));
       }
 
       /* 🚨 Не долбим одним и тем же. Если по навыку три затруднения подряд
@@ -339,6 +386,11 @@ export function sozdatZamer(L){
          в банке десятки заданий, они не повторяются. */
       return svoi.length ? svoi[svoi.length - 1] : null;
     },
+
+    /** Возраст ребёнка — грубая прикидка, откуда начинать ПОИСК.
+        🚨 Уровнем он не становится: экран возраста до 19.09 вообще ни
+        на что не влиял, хотя подпись обещала обратное. */
+    vozrast(let_){ P.vozrast = +let_ || 0; sohranit(P); },
 
     /** Что взрослый указал про уровень: {навык: индекс ступени}. */
     uroven(){ return { ...(P.uroven || {}) }; },

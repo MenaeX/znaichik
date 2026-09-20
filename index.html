@@ -72,7 +72,8 @@ body{
 .ekran.vidno{display:flex}
 
 /* ── вход: выбор зверька. Первое касание разблокирует звук ─────── */
-#vhod{align-items:center;justify-content:center;text-align:center}
+#vhod,#zastavka,#vozrast{align-items:center;justify-content:center;text-align:center}
+#zastavka h1,#vozrast h1{font-family:Comfortaa,sans-serif;font-size:clamp(24px,5vw,42px);margin:0}
 #vhod h1{font-family:Comfortaa,sans-serif;font-size:clamp(24px,5vw,42px);margin:0}
 #vhod .pod{color:var(--tihiy);font-size:clamp(14px,2vw,18px);font-weight:600;margin:0}
 .zveri-vybor{display:flex;gap:clamp(12px,2.5vw,26px);flex-wrap:wrap;justify-content:center;margin-top:clamp(14px,3vh,30px)}
@@ -375,7 +376,7 @@ body{
 .zakryt{margin-top:22px;background:var(--chernila);color:var(--list);border:none;
   border-radius:999px;padding:13px 30px;font:inherit;font-weight:900;cursor:pointer}
 .snoska{font-size:13px;color:var(--tihiy);line-height:1.6;margin-top:18px;font-weight:600}
-.itog-zahoda{display:flex;flex-direction:column;align-items:center;gap:10px}
+.itog-zahoda,.cel-zahoda{display:flex;flex-direction:column;align-items:center;gap:10px}
 /* 🚨 Корзина итога: ребёнок не читает чисел, поэтому «сколько собрал»
    показывается кучей ягод в корзине, а не цифрой (проба 10.09). */
 .korzina{position:relative;width:clamp(180px,42vw,300px);margin:0 auto}
@@ -400,9 +401,6 @@ body{
   30%{transform:translateY(-16px) rotate(-4deg)}
   60%{transform:translateY(-6px) rotate(3deg)}
 }
-.itog-yagody{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:280px}
-.itog-yagody i{width:clamp(22px,3.4vw,34px);height:clamp(22px,3.4vw,34px);border-radius:50%;
-  background:var(--yagoda);display:block}
 /* 🚨 Выключатель звука. Размер как у кнопок игры — не меньше 44 px,
    иначе детский палец в неё не попадёт (правило проверок вёрстки). */
 .tishe{width:clamp(44px,7vw,52px);height:clamp(44px,7vw,52px);flex:0 0 auto;
@@ -424,12 +422,86 @@ body{
 .korzina-yagody i.mesto{background:transparent;border:2px dashed rgba(194,85,72,.55);
   opacity:0;transform:scale(.6);transition:opacity .25s,transform .25s}
 .korzina-yagody i.mesto.vidno{opacity:1;transform:scale(1)}
+/* ── заставка и возраст ─────────────────────────────────────── */
+.zastavka-vn{display:flex;flex-direction:column;align-items:center;
+  gap:clamp(10px,2vh,18px);max-width:34rem;margin:0 auto;text-align:center}
+.zastavka-zver{width:clamp(140px,30vw,230px);height:clamp(140px,30vw,230px)}
+.zastavka-zver img,.zastavka-zver svg{width:100%;height:auto;display:block}
+.zastavka-imya{font-family:Nunito;font-weight:900;
+  font-size:clamp(38px,9vw,68px);color:var(--yantar);margin:0}
+.zastavka-vzroslomu{font-family:Comfortaa;font-size:clamp(12px,1.9vw,14px);
+  color:var(--tihiy);line-height:1.55;max-width:26rem;margin-top:clamp(8px,2vh,18px)}
+.bolshaya{font-family:Nunito;font-weight:900;font-size:clamp(20px,3.4vw,26px);
+  color:#fff;background:var(--yantar);border:0;border-radius:999px;cursor:pointer;
+  padding:clamp(13px,2.2vh,18px) clamp(38px,7vw,62px);box-shadow:var(--ten)}
+.bolshaya:active{transform:translateY(2px)}
+.vozrast-vybor{display:flex;gap:clamp(12px,3vw,26px);justify-content:center;
+  flex-wrap:wrap;margin-top:clamp(14px,3vh,28px)}
+.vozrast-karta{font-family:Nunito;font-weight:900;border:0;cursor:pointer;
+  background:var(--list-2);color:var(--chernila);border-radius:var(--skruglenie,22px);
+  box-shadow:var(--ten);padding:clamp(18px,3vh,28px) clamp(22px,4vw,36px);
+  display:flex;flex-direction:column;align-items:center;gap:6px;min-width:96px}
+.vozrast-karta b{font-size:clamp(34px,7vw,54px);line-height:1;color:var(--yantar)}
+.vozrast-karta span{font-family:Comfortaa;font-weight:600;font-size:14px;
+  color:var(--tihiy)}
+.vozrast-karta:active{transform:translateY(2px)}
+/* 🚨 Картинка задания. Обёртке ширину задавали, а самой картинке —
+   нет: <img> рисуется в природный размер и разносит раскладку.
+   Живая проба 19.09: «появляется огромный кот и очень большой дом». */
+.kartinka-zadaniya{width:clamp(96px,17vh,170px);margin:0 auto 10px}
+.kartinka-zadaniya picture,.kartinka-zadaniya img{display:block;width:100%;height:auto}
+
+/* 🚨 Строчка обязана ВЫГЛЯДЕТЬ строчкой. Слова стояли отдельными
+   карточками — на экране было три варианта ответа, а не строка текста,
+   и вопрос про «эту строчку» повисал в воздухе (живая проба 19.09).
+   Теперь это лист с одной строкой, слова лежат подряд на общей линейке. */
+.list-stroki{background:#FFFDF8;border:2px solid #EADFC9;border-radius:16px;
+  padding:clamp(14px,2.4vw,24px) clamp(12px,2.2vw,22px);margin:0 auto;
+  max-width:min(94%,620px);box-shadow:0 2px 0 rgba(0,0,0,.05)}
+.list-stroki .stroka-teksta{border-bottom:3px solid #E7D9C2;padding-bottom:6px;
+  flex-wrap:nowrap}
+.list-stroki .stroka-teksta .v{background:transparent!important;box-shadow:none!important;
+  border:0!important;padding:2px 6px!important;min-width:auto!important;
+  /* 🚨 Кнопка держит квадрат 90-175 px, и строка расползалась в полосу
+     с линейкой далеко под словами. На листе высота не нужна: это слово,
+     а не карточка. */
+  min-height:auto!important;line-height:1.15}
+.list-stroki .stroka-teksta .v:active{background:#FBEFD8!important;border-radius:8px}
+/* Слово над домиками: буквы отдельными знаками, чтобы каждая могла
+   переехать в свой домик. */
+.domik-slovo{display:flex;gap:clamp(6px,1.2vw,12px);justify-content:center;
+  margin-bottom:clamp(10px,2vh,18px)}
+.domik-bukva{font-family:Nunito;font-weight:900;font-size:clamp(28px,4.6vw,44px);
+  color:var(--chernila);display:inline-block}
 .itog-chislo{font-family:Nunito;font-weight:900;font-size:clamp(44px,8vw,76px);line-height:1}
 .itog-podpis{font-family:Comfortaa;font-weight:600;font-size:16px;color:var(--tihiy)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
-<div class="ekran vidno" id="vhod">
+<div class="ekran vidno" id="zastavka">
+  <div class="zastavka-vn">
+    <div class="zastavka-zver" id="zastavka-zver"></div>
+    <h1 class="zastavka-imya">Знайчик</h1>
+    <p class="pod">Помогаем зверятам — и учимся читать и считать</p>
+    <button class="bolshaya" id="nachat-igru">Играть</button>
+    <!-- 🚨 Для родителя, мелким. Ребёнок не читает — ему хватает ёжика
+         и большой кнопки. Взрослому надо понять замысел за один взгляд. -->
+    <p class="zastavka-vzroslomu">
+      Игра сама выясняет, что ребёнок уже умеет, и дальше даёт задания
+      от его уровня. Заход — около десяти минут. Микрофона нет, имя
+      ребёнка нигде не спрашивается.
+    </p>
+  </div>
+</div>
+
+<div class="ekran" id="vozrast">
+  <h1>Сколько лет ребёнку?</h1>
+  <p class="pod">Это только точка отсчёта. Что ребёнок умеет на самом деле,
+     игра выяснит сама за первые минуты</p>
+  <div class="vozrast-vybor" id="vozrast-vybor"></div>
+</div>
+
+<div class="ekran" id="vhod">
   <h1>Кто пойдёт с тобой?</h1>
   <p class="pod">Выбери друга — и отправимся в лес</p>
   <div class="zveri-vybor" id="zveri-vybor"></div>
@@ -753,6 +825,28 @@ function kodRepliki(z){
   return est_zver ? `${bez}_${moyZver}` : bez;
 }
 
+/* Нейтральные реплики перехода: ни одна не сообщает, верно ли ответил.
+   🚨 Похвальных тут нет намеренно — в замере ребёнку не говорят, угадал
+   он или нет. Поэтому ни «хорошо», ни «молодец». */
+const SHAGI = ['shag', 'shag2', 'shag3', 'shag4', 'shag5', 'shag6', 'shag7',
+               'shag8', 'shag9', 'shag10', 'shag11', 'shag12', 'shag13',
+               'shag14', 'shag15', 'shag16'];
+/* 🚨 Раздаём КОЛОДОЙ, а не наугад. Со случайным выбором из пяти каждая
+   реплика звучала за заход по три раза, и живая проба 19.09 услышала
+   ровно это: «постоянно говорит "так, дальше"». Колода гарантирует, что
+   за пятнадцать заданий захода не повторится ни одна. */
+let koloda = [];
+function shag(){
+  if (!koloda.length){
+    koloda = SHAGI.slice();
+    for (let i = koloda.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [koloda[i], koloda[j]] = [koloda[j], koloda[i]];
+    }
+  }
+  return koloda.pop();
+}
+
 /** Случайный отклик на верный ответ. */
 const OTKLIKI = ['da','verno','umnica','tochno'];
 const otklik = () => OTKLIKI[Math.floor(Math.random()*OTKLIKI.length)];
@@ -801,10 +895,73 @@ async function zagruzit(){
   L = await r.json();
   pokazatSostoyanieZvuka();
   zamer = sozdatZamer(L);
+  /* Возраст спрашивается один раз и живёт отдельным ключом: после
+     перезагрузки экран не показывается, значит замеру надо подсказать
+     точку старта самим. */
+  if (vozrastRebyonka()) zamer.vozrast(vozrastRebyonka());
   el('zveri-vybor').innerHTML = L.zveri.map(z =>
     `<button class="zver-karta" data-z="${z}" aria-label="Выбрать">${ZVERI[z]}</button>`).join('');
   el('zveri-vybor').querySelectorAll('.zver-karta').forEach(b =>
     b.onclick = () => { razblokirovat(); moyZver = b.dataset.z; nachat(); });
+
+  sobratZastavku();
+}
+
+/* ── заставка и возраст ──────────────────────────────────────────
+   🚨 Игра начиналась сразу с выбора зверя, то есть практически с урока.
+   Живая проба 19.09: «как главное меню должно быть какие-то кнопки,
+   допустим, возраста ребёнка, о чём игра, какие-то вводные». */
+
+const VOZRASTY = [
+  {let: 5, podpis: 'пять лет'},
+  {let: 6, podpis: 'шесть лет'},
+  {let: 7, podpis: 'семь лет'},
+];
+
+function perejti(otkuda, kuda){
+  el(otkuda).classList.remove('vidno');
+  el(kuda).classList.add('vidno');
+}
+
+function sobratZastavku(){
+  el('zastavka-zver').innerHTML = ZVERI['yozh'];
+
+  el('nachat-igru').onclick = () => {
+    /* 🚨 Первое касание разблокирует звук на планшете: браузер пускает
+       воспроизведение только после жеста. Раньше это делал выбор зверя,
+       теперь самый первый экран — значит звук готов ещё раньше. */
+    razblokirovat();
+    /* Возраст спрашиваем ОДИН раз: второй заход начинается сразу с игры. */
+    perejti('zastavka', vozrastRebyonka() ? 'vhod' : 'vozrast');
+  };
+
+  el('vozrast-vybor').innerHTML = VOZRASTY.map(v =>
+    `<button class="vozrast-karta" data-let="${v.let}" aria-label="${v.podpis}">` +
+    `<b>${v.let}</b><span>${v.podpis}</span></button>`).join('');
+  el('vozrast-vybor').querySelectorAll('.vozrast-karta').forEach(b =>
+    b.onclick = () => {
+      zapisatVozrast(+b.dataset.let);
+      perejti('vozrast', 'vhod');
+    });
+}
+
+/* 🚨 Возраст — ТОЛЬКО точка, откуда начинается поиск уровня, и ничего
+   больше. Андрей 19.09: «знания в 5 лет могут быть больше чем у 7-летнего,
+   смотря как его обучали». Поэтому возраст не назначает ступень: он
+   выбирает, с какого места игра начнёт искать, а ищет она галопом
+   (zamer.js, sleduyushiy_indeks) и за три-четыре задания доходит до
+   настоящей границы независимо от того, откуда стартовала.
+
+   До 19.09 подпись тут обещала ровно это, а кода не было вовсе:
+   zamer.vozrast не существовал, и семилетка начинал с буквы А. */
+function vozrastRebyonka(){
+  try { return +localStorage.getItem('znaichik_vozrast') || 0; }
+  catch(e){ return 0; }
+}
+
+function zapisatVozrast(let_){
+  try { localStorage.setItem('znaichik_vozrast', String(let_)); } catch(e){}
+  if (zamer && zamer.vozrast) zamer.vozrast(let_);
 }
 
 function nachat(){
@@ -852,6 +1009,17 @@ function pokazat(){
      внутри них — часть механики, а не подсказка в замере. */
   document.body.dataset.izmeryaem = (!z.stupen.ne_zamer && rezhim === 'zamer') ? '1' : '0';
   document.body.dataset.stupen = z.stupen.id;
+  /* 🚨 Объявление цели идёт ПЕРЕД всем остальным, включая реплику задания.
+     Живая проба 18.09: «появляется задание с выбором букв, но звук
+     спрашивает про большую ягодку». Причина была здесь: объявление стояло
+     ПОСЛЕ skazat(), реплика задания успевала начаться и продолжала звучать
+     поверх чужого экрана. Порядок жёсткий: сначала решаем, какой экран
+     показываем, и только потом говорим. */
+  if (!obyavili_cel){
+    obyavili_cel = true;
+    obyavitCel(() => pokazat());
+    return;
+  }
   narisovatPut();
   el('zver').innerHTML = ZVERI[moyZver];
   el('zver').className = 'zver zhdet';
@@ -860,25 +1028,39 @@ function pokazat(){
      три ягоды на экране — и не понимал, чего от ребёнка хотят. Ребёнок
      всё равно не читает, а рядом сидящий родитель обязан понимать игру
      с первого взгляда. Название ступени взрослый видит в карте. */
-  el('podpis').textContent = rech(z.zadanie.golos);
-  el('slushat').style.display = '';        // на прочих экранах кнопка нужна
   const kod = kodRepliki(z);
-  /* 🚨 У немой артикуляции реплики нет вовсе: ребёнок читает по губам.
-     Единственный экран игры, где зверь молчит намеренно. */
-  if (z.stupen.tip !== 'nemaya'){
+  const sprosit = () => {
+    el('podpis').textContent = rech(z.zadanie.golos);
+    el('slushat').style.display = '';      // на прочих экранах кнопка нужна
     /* отсчёт повтора и подсказки — от конца реплики, не от начала */
     skazat(kod, () => zapustitPovtor(kod));
-  }
-  /* Один раз за заход, перед самым первым заданием, объявляем цель. */
-  if (!obyavili_cel){
-    obyavili_cel = true;
-    obyavitCel(() => pokazat());
+    perehodIdyot = false;                  // новый экран — снова принимаем ответы
+    nachato = performance.now(); popytok = 0; podskazok = 0; sobrano = [];
+    pogasitObrazec();
+    el('stol').innerHTML = '';
+    dorisovat();
+  };
+
+  /* 🚨 Объяснение домиков идёт ПЕРЕД вопросом, а не поверх него. Оно
+     жило внутри рисования и появлялось уже после того, как зверь начал
+     спрашивать: ребёнок слышал «Лампа. Где живёт этот звук?» и видел
+     на экране КОТ (живая проба 19.09). Правило то же, что спасло ягодку:
+     сначала решаем, какой экран, и только потом говорим. */
+  if (z.stupen.tip === 'shema_slova' && !pokazaliShemu){
+    pokazaliShemu = true;
+    el('slushat').style.display = 'none';
+    el('podpis').textContent = 'Смотри: у каждого звука свой домик';
+    el('stol').innerHTML = '';
+    pokazatDomiki(sprosit);
     return;
   }
-  perehodIdyot = false;                   // новый экран — снова принимаем ответы
-  nachato = performance.now(); popytok = 0; podskazok = 0; sobrano = [];
-  pogasitObrazec();
-  el('stol').innerHTML = '';
+  sprosit();
+}
+
+/* Рисование самого задания — общий хвост для обоих путей: и когда
+   спрашиваем сразу, и когда сперва объяснили домики. */
+function dorisovat(){
+  const z = tekushee;
 
   /* 🚨 В обучении зверь СНАЧАЛА ПОКАЗЫВАЕТ, и только потом просит.
      Ребёнок 6-7 лет не выполняет инструкцию, которой не видел: у Козыревой
@@ -1051,86 +1233,6 @@ const OBRAZCY = {
     });
   },
 
-  /* 🚨 Немая артикуляция — ЕДИНСТВЕННЫЙ экран без звука.
-     Жукова, с. 6: «Поочерёдно сложив свои губы в немой артикуляции звуков
-     а, у, о, попросите ребёнка угадать, какую букву вы назвали».
-     Рот рисуется формой: для [а] широко открыт, для [у] вытянут трубочкой,
-     для [о] круглый. Ребёнок читает по губам, а не по слуху — второй канал
-     для того, кто путает звуки на слух. */
-  nemaya(z, dalshe){
-    /* Форма губ для каждого звука своя НЕ размером, а рисунком:
-       [а] — рот распахнут, видны язык и тёмная глубина;
-       [о] — ровное кольцо губ средней толщины;
-       [у] — маленькое отверстие с ТОЛСТЫМИ вытянутыми губами.
-       Раньше все три были одним эллипсом разного размера: «трубочка»
-       и «кружок» выглядели одинаково, и вся разница жила в подписи,
-       которую шестилетка не читает. */
-    const FORMY = {
-      'а': {rx: 40, ry: 30, guba: 7,  podpis: 'рот широко открыт', yazyk: true},
-      'о': {rx: 25, ry: 27, guba: 11, podpis: 'губы кружком',      yazyk: false},
-      'у': {rx: 13, ry: 14, guba: 17, podpis: 'губы вытянуты трубочкой', yazyk: false},
-    };
-    const forma = FORMY[z.zadanie.rot] || FORMY['о'];
-    const d = document.createElement('div');
-    d.className = 'obrazec';
-    /* Лицо, а не пятно: волосы, брови, глаза с блеском, нос и щёки.
-       Ребёнок должен узнать лицо с первого взгляда, иначе смотреть
-       на губы ему просто не приходит в голову. */
-    d.innerHTML = `<div class="obr-podpis">Смотри на губы</div>
-      <svg viewBox="0 0 200 190" class="obr-rot">
-        <ellipse cx="100" cy="104" rx="66" ry="76" fill="#F6D8BE"/>
-        <path d="M34 92 Q38 26 100 24 Q162 26 166 92 Q150 60 118 54
-                 Q92 76 34 92 Z" fill="#7A4A2B"/>
-        <ellipse cx="34" cy="112" rx="9" ry="13" fill="#F0C9AA"/>
-        <ellipse cx="166" cy="112" rx="9" ry="13" fill="#F0C9AA"/>
-        <path d="M54 88 Q70 78 86 87" stroke="#7A4A2B" stroke-width="6"
-              fill="none" stroke-linecap="round"/>
-        <path d="M114 87 Q130 78 146 88" stroke="#7A4A2B" stroke-width="6"
-              fill="none" stroke-linecap="round"/>
-        <ellipse cx="70" cy="106" rx="11" ry="12" fill="#FFF"/>
-        <ellipse cx="130" cy="106" rx="11" ry="12" fill="#FFF"/>
-        <circle cx="71" cy="107" r="6" fill="#4A3B32"/>
-        <circle cx="131" cy="107" r="6" fill="#4A3B32"/>
-        <circle cx="73" cy="104" r="2" fill="#FFF"/>
-        <circle cx="133" cy="104" r="2" fill="#FFF"/>
-        <path d="M100 116 Q94 130 102 133" stroke="#D9A883" stroke-width="5"
-              fill="none" stroke-linecap="round"/>
-        <ellipse cx="52" cy="132" rx="10" ry="7" fill="#F2B49B" opacity=".6"/>
-        <ellipse cx="148" cy="132" rx="10" ry="7" fill="#F2B49B" opacity=".6"/>
-        <g id="obr-guby" transform="translate(100 152)">
-          <ellipse rx="4" ry="3" fill="#5E2B27"
-                   stroke="#D98A78" stroke-width="4"/>
-        </g>
-      </svg>`;
-    el('stol').appendChild(d);
-    el('podpis').textContent = `Беззвучно: ${forma.podpis}`;
-    /* 🚨 Кнопка «Послушать» здесь повторяет ИНСТРУКЦИЮ, а не букву.
-       Прятать её нельзя: ребёнок, прослушавший задание, остаётся один
-       на один с молчащим экраном и не знает, чего от него хотят. */
-    el('slushat').style.display = '';
-
-    const guby = el('obr-guby');
-    /* Губы вырастают в свою форму: рисунок ставим сразу, а показываем
-       ростом от сомкнутых — так видно САМО ДВИЖЕНИЕ рта, а не итог. */
-    const yazyk = forma.yazyk
-      ? `<path d="M ${-forma.rx * 0.5} ${forma.ry * 0.35}
-                  Q 0 ${forma.ry * 0.95} ${forma.rx * 0.5} ${forma.ry * 0.35} Z"
-               fill="#C86A6A"/>` : '';
-    guby.innerHTML = `
-      <ellipse rx="${forma.rx}" ry="${forma.ry}" fill="#5E2B27"
-               stroke="#D98A78" stroke-width="${forma.guba}"/>
-      ${yazyk}`;
-    guby.animate([{transform: 'translate(100px,152px) scale(.25)'},
-                  {transform: 'translate(100px,152px) scale(1)'}],
-                 {duration: 900, fill: 'forwards', easing: 'ease-out'});
-
-    /* 🚨 Инструкция ЗВУЧИТ, немой остаётся только буква. У Жуковой
-       (с. 6) взрослый вслух просит угадать и лишь потом складывает губы
-       беззвучно — просьба голосом есть часть приёма, а не нарушение. */
-    skazat('nemaya_vstup', () => zapustitPovtor('nemaya_vstup'));
-    cherezObrazec(dalshe, 2600);
-  },
-
   /* Похожие буквы: показываем обе рядом и различие — не «запомни»,
      а «смотри, чем отличаются». Смешение Б/Д, Ш/Щ, И/Й — типичное,
      и лечится оно сравнением, а не заучиванием. */
@@ -1235,7 +1337,7 @@ const OBRAZCY = {
     d.innerHTML = `<div class="obr-podpis">Слово и то, что оно значит</div>
       <div class="obr-para">
         <span class="obr-slovo">КОТ</span>
-        <div style="width:clamp(70px,12vh,120px)">${KARTINKI['кот'] || ''}</div>
+        <div class="kartinka-zadaniya" style="margin:0">${KARTINKI['кот'] || ''}</div>
       </div>`;
     el('stol').appendChild(d);
     el('podpis').textContent = 'Прочитали слово — и сразу понятно, про что оно';
@@ -1344,32 +1446,66 @@ let pokazaliShemu = false;
 /** Показ: слово КОТ раскладывается по домикам, указка идёт по звукам. */
 function pokazatDomiki(dalshe){
   const primer = 'КОТ';
+  const ZVUCHIT = 1;                    // какой звук показываем «в домике»
   const d = document.createElement('div');
   /* 🚨 Класс НЕ «obrazec»: это не показ ответа, а объяснение правил игры
      на постороннем слове. Показ ответа в замере запрещён, объяснение
      механики — нет, иначе ребёнок видит пустые клетки и не знает,
      что с ними делать. Харнес считает именно показы ответа. */
   d.className = 'pravila shema-obertka';
-  d.innerHTML = `<div class="obr-podpis">У каждого звука свой домик</div>
+  d.innerHTML = `<div class="obr-podpis" id="obr-podskaz">Вот слово</div>
+    <div class="domik-slovo" id="obr-slovo">` +
+    primer.split('').map((b, i) =>
+      `<span class="domik-bukva" id="obr-let-${i}">${b}</span>`).join('') +
+    `</div>
     <div class="shema" id="obr-domiki">` +
     primer.split('').map((b, i) =>
       `<div class="kletka pokaz" id="obr-dom-${i}"><span id="obr-zv-${i}"></span></div>`).join('') +
     `</div>`;
   el('stol').appendChild(d);
   el('podpis').textContent = 'Смотри: КОТ — три звука, три домика';
-  let kogda = 600;
-  primer.split('').forEach((b, i) => {
-    const derzhim = TYANUTSYA_ZVUKI.includes(b) ? 520 : 200;
+
+  /* Буква переезжает из слова в свой домик: считаем расстояние по месту
+     на экране, чтобы движение было настоящим, а не «появилась и всё». */
+  const pereehat = i => {
+    const bukva = el('obr-let-' + i), dom = el('obr-dom-' + i), zv = el('obr-zv-' + i);
+    if (!bukva || !dom) return;
+    const a = bukva.getBoundingClientRect(), b = dom.getBoundingClientRect();
+    bukva.animate([{transform: 'translate(0,0)'},
+                   {transform: `translate(${b.left - a.left + (b.width - a.width) / 2}px,`
+                             + `${b.top - a.top + (b.height - a.height) / 2}px)`}],
+                  {duration: 420, fill: 'forwards', easing: 'ease-in-out'});
     cherezObrazec(() => {
-      const dom = el('obr-dom-' + i), zv = el('obr-zv-' + i);
-      if (dom) dom.classList.add('gorit');
-      if (zv) zv.textContent = b;
-    }, kogda);
-    cherezObrazec(() => { const dom = el('obr-dom-' + i); if (dom) dom.classList.remove('gorit'); },
-                  kogda + derzhim);
-    kogda += derzhim + 120;
+      bukva.style.visibility = 'hidden';
+      if (zv) zv.textContent = primer[i];
+      dom.classList.add('gorit');
+      cherezObrazec(() => dom.classList.remove('gorit'), 420);
+    }, 420);
+  };
+
+  let kogda = 700;
+  primer.split('').forEach((b, i) => {
+    cherezObrazec(() => pereehat(i), kogda);
+    kogda += 620;
   });
-  cherezObrazec(() => { el('stol').innerHTML = ''; dalshe(); }, kogda + 700);
+
+  /* 🚨 Главный ход: звук выходит из своего домика наверх и возвращается
+     туда же. Именно его ребёнка и просят сделать — «где живёт этот звук».
+     Без этого показ объяснял, что домики есть, но не что с ними делать. */
+  cherezObrazec(() => {
+    const dom = el('obr-dom-' + ZVUCHIT), zv = el('obr-zv-' + ZVUCHIT);
+    const pod = el('obr-podskaz');
+    if (pod) pod.textContent = `Звук ${primer[ZVUCHIT]} живёт вот тут`;
+    if (zv) zv.animate([{transform: 'translateY(0)'},
+                        {transform: 'translateY(-46px)'},
+                        {transform: 'translateY(0)'}],
+                       {duration: 1100, easing: 'ease-in-out'});
+    if (dom) cherezObrazec(() => dom.classList.add('gorit'), 900);
+  }, kogda + 200);
+
+  /* Темп задаёт голос: уходим, когда и реплика договорена, и движение
+     доиграло. Таймером тут нельзя — реплику срежет на полуслове. */
+  skazatIDalshe('domiki_pokaz', kogda + 1700, () => { el('stol').innerHTML = ''; dalshe(); });
 }
 
 /* 🚨 Цель захода объявляется ВСЛУХ и показывается корзиной с пустыми
@@ -1381,7 +1517,13 @@ let obyavili_cel = false;
 function obyavitCel(dalshe){
   const cel = (L && L.pravila && L.pravila.zadaniy_v_zahode) || 15;
   const d = document.createElement('div');
-  d.className = 'pravila itog-zahoda';
+  /* 🚨 СВОЙ класс, не 'itog-zahoda'. Финальный экран помечен именно им,
+     и по нему все проверки узнают конец захода. Дав экрану цели тот же
+     класс, я сломал разом и прогоны, и сам замер: игра «заканчивалась»
+     на нулевом шаге, до единого задания, и в карту родителя не попадало
+     ничего (поймано 19.09). Метка экрана — это опознавательный знак,
+     а не оформление: переиспользовать нельзя. */
+  d.className = 'pravila cel-zahoda';
   d.innerHTML = `<div class="obr-podpis">Сегодня собираем столько</div>
     <div class="korzina" id="korzina-cel">
       <svg viewBox="0 0 200 130" class="korzina-svg" aria-hidden="true">
@@ -1440,11 +1582,6 @@ const RISUEM = {
        текущего задания не подсказан, и замер остаётся замером.
        «Звук произносим быстро, не тянем, мы не можем задерживаться
        в этом домике и переходим в другой» (Варенцова). */
-    if (!pokazaliShemu){
-      pokazaliShemu = true;
-      pokazatDomiki(() => RISUEM.shema_slova(z));
-      return;
-    }
     const obertka = document.createElement('div');
     obertka.className = 'shema-obertka';
     obertka.innerHTML = `<div class="shema-zvuk">${zad.zvuk}</div>`;
@@ -1528,7 +1665,10 @@ const RISUEM = {
       b.onclick = () => otvet(b, i === z.zadanie.verno, z);
       d.appendChild(b);
     });
-    el('stol').appendChild(d);
+    const list = document.createElement('div');
+    list.className = 'list-stroki';
+    list.appendChild(d);
+    el('stol').appendChild(list);
   },
   pokazat_kartinku(z){
     const d=document.createElement('div'); d.className='varianty';
@@ -1545,7 +1685,7 @@ const RISUEM = {
   slovo_k_kartinke(z){
     const k=document.createElement('div');
     k.style.cssText='display:grid;place-items:center;margin-bottom:8px';
-    k.innerHTML = `<div style="width:clamp(90px,15vh,150px)">${KARTINKI[z.zadanie.kartinka]||''}</div>`;
+    k.innerHTML = `<div class="kartinka-zadaniya">${KARTINKI[z.zadanie.kartinka]||''}</div>`;
     el('stol').appendChild(k);
     RISUEM.vybor(z);
   },
@@ -1563,17 +1703,6 @@ const RISUEM = {
     });
     el('stol').appendChild(d);
   },
-  nemaya(z){
-    /* Задание немой артикуляции: сначала рот беззвучно складывает звук,
-       потом появляются буквы на выбор. Показ и задание тут слиты в одно —
-       поэтому рисуем сами, а не через OBRAZCY. */
-    OBRAZCY.nemaya(z, () => {
-      el('stol').innerHTML = '';
-      RISUEM.vybor(z);
-      el('podpis').textContent = 'Какую букву показали губы?';
-    });
-  },
-
   poschitat(z){
     const p=document.createElement('div'); p.className='predmety';
     if (z.zadanie.skolko > 10) p.classList.add('mnogo');
@@ -1786,7 +1915,13 @@ function otvet(knopka, verno, z, konec){
        семи лет понимают похвалу буквально (Henderlong и Lepper, 2002),
        ребёнок слышал «Молодец» и делал вывод, что ответил верно.
        Похвала осталась только на обучающих шагах, где она честная. */
-    skazatIDalshe('shag', 1100, ()=>{ vydano++; pokazat(); });
+    /* 🚨 Реплика шага ЧЕРЕДУЕТСЯ. Живая проба 19.09: «при прохождении
+       постоянно говорит "так, дальше"» — одна и та же фраза после каждого
+       из пятнадцати заданий звучит как отмашка учителя, которому надоело.
+       Смысл её при этом верный: в замере ребёнку нельзя сообщать, верно ли
+       он ответил, поэтому вместо похвалы нейтральный шаг. Похвальных слов
+       среди них нет намеренно: «молодец» научит угадывать, что ответ верен. */
+    skazatIDalshe(shag(), 1100, ()=>{ vydano++; pokazat(); });
     return;
   }
 
@@ -1891,12 +2026,55 @@ function narisovatRuchku(){
   });
 }
 
+/* Русское склонение при числе: 1 заход, 2 захода, 5 заходов.
+   Без него в карте родителя выходило «нужно ещё 5 захода». */
+function sklonenie(n, odin, dva, mnogo){
+  const h = Math.abs(n) % 100, d = h % 10;
+  if (h > 10 && h < 20) return mnogo;
+  if (d > 1 && d < 5) return dva;
+  if (d === 1) return odin;
+  return mnogo;
+}
+
 function sobratKartu(){
   narisovatRuchku();
   const it = zamer.itog();
-  el('dop').textContent = it.vsego
-    ? `Заходов: ${it.zahodov}. Ответов записано: ${it.vsego}.`
-    : 'Пока пусто — нужен хотя бы один заход.';
+  /* 🚨 Карта обязана говорить о СВОЕЙ неполноте. Ступень получает вердикт
+     не с одного ответа: 80 % чисто — «умеет», одна ошибка — «проверяем»,
+     «пока нет» — только после двух неудач. Правило верное, диагноз с одного
+     наблюдения ставить нельзя. Но родителю это нигде не объяснялось, и
+     пустая карта после первого захода читалась как «ничего не работает»
+     (19.09, Андрей: «у нас до сих пор нет проверки уровня знаний»). */
+  const vsego_stupeney = Object.values(L.navyki)
+    .reduce((n, nav) => n + nav.stupeni.filter(st => !st.ne_zamer).length, 0);
+  /* 🚨 Читаем то, что замер ОТДАЁТ, а не то, что я про него придумал.
+     Сначала фильтровал по полям est и popytok — их в итоге нет вовсе,
+     и карта показывала «побывала на 0 ступенях» при пяти отвеченных.
+     В итоге у каждой ступени есть metka: «—» (не проверяли), «проверяем»,
+     «умеет», «шатко», «пока нет». */
+  const vse = Object.values(it.stupeni || {});
+  const zatronuto = vse.filter(x => x && x.metka !== '—').length;
+  const proverennyh = vse.filter(
+    x => x && ['умеет', 'шатко', 'пока нет'].includes(x.metka)).length;
+  if (!it.vsego){
+    el('dop').textContent = 'Пока пусто — нужен хотя бы один заход.';
+  } else if (proverennyh < vsego_stupeney){
+    const ostalos = Math.max(1, Math.ceil((vsego_stupeney - proverennyh) / 5));
+    /* 🚨 «Проверено 0 из 22» при пяти отвеченных ступенях сбивает с толку.
+       Разводим два разных числа: где игра УЖЕ ПОБЫВАЛА и где успела
+       поставить оценку. Второе всегда отстаёт — это и надо объяснить. */
+    el('dop').textContent =
+      `Заходов: ${it.zahodov} · ответов записано: ${it.vsego} · ` +
+      `игра побывала на ${zatronuto} ${sklonenie(zatronuto, 'ступени', 'ступенях', 'ступенях')} ` +
+      `из ${vsego_stupeney}, оценку успела поставить по ${proverennyh}. ` +
+      `Нужно ещё примерно ${ostalos} ${sklonenie(ostalos, 'заход', 'захода', 'заходов')}: ` +
+      `оценку по ступени игра ставит не с первого ответа — один промах ` +
+      `это «проверяем», а не «не умеет».`;
+  } else {
+    el('dop').textContent =
+      `Заходов: ${it.zahodov}. Ответов записано: ${it.vsego}. ` +
+      `Проверены все ${vsego_stupeney} ступеней.`;
+  }
   let h = '';
   for (const [kod, nav] of Object.entries(L.navyki)){
     h += `<div class="gruppa">${nav.imya}</div>`;
@@ -1921,7 +2099,7 @@ function sobratKartu(){
 /* 🚨 Точка для машинных проверок. Скрипт — модуль, изнутри наружу
    не видно ничего, а экраны обязаны проверяться замером, а не глазами.
    Наружу отдаём ТОЛЬКО отрисовку: ни замера, ни прогресса ребёнка. */
-window.PROVERKA = {OBRAZCY, RISUEM};
+window.PROVERKA = {OBRAZCY, RISUEM, pokazatDomiki, zamer: () => zamer, sostoyanie: () => ({perehodIdyot, vydano, rezhim, obyavili_cel})};
 
 /* Выключатель: гасит текущую реплику, отсчёты повтора и запоминает выбор. */
 el('tishe').onclick = () => {
@@ -1967,9 +2145,7 @@ el('slushat').onclick = () => {
      не расслышал и нажал самую большую кнопку на экране, откатывался назад,
      даже ответив верно. Подсказкой считается только показ правильного
      ответа (pokazatPodskazku). Поймано критиком 29.08 прогоном lesenka.py. */
-  /* На немом экране повторяем ИНСТРУКЦИЮ: буква остаётся беззвучной,
-     но ребёнок должен иметь возможность переспросить, что делать. */
-  const k = (z && z.stupen.tip === 'nemaya') ? 'nemaya_vstup' : (z ? kodRepliki(z) : null);
+  const k = z ? kodRepliki(z) : null;
   if (k){ ostanovitPovtor(); skazat(k, () => zapustitPovtor(k)); }
 };
 /* 🚨 Вход для взрослого закрыт примером на умножение: шестилетка его не решит,
