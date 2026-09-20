@@ -789,11 +789,25 @@ function skazat(kod, kogdaKonchit){
    Страховка обязательна: нет файла или браузер не пустил звук — экран
    не имеет права замереть навсегда. */
 let perehodIdyot = false;                 // переход уже начат — второй ответ не считается
+/* 🚨 У перехода СВОЙ номер, отдельный от номера реплики. Страховку
+   обязан отменять только другой переход — ради этого она и заводилась.
+   Пока она смотрела на номер реплики, переход убивал кто угодно: нажатие
+   «Послушать», включение звука обратно. Экран замирал насмерть, и это
+   видно только на домене, где звук едет по сети (проверка боем 20.09). */
+let nomerPerehoda = 0;
+let dovestiPerehod = null;                // незавершённый переход — довести досрочно
 function skazatIDalshe(kod, minimum, dalshe){
   let ushli = false;
   perehodIdyot = true;
+  const moyPerehod = ++nomerPerehoda;
   const nachalo = performance.now();
-  const puskay = () => { if (ushli) return; ushli = true; perehodIdyot = false; dalshe(); };
+  const puskay = () => {
+    if (ushli) return;
+    ushli = true; perehodIdyot = false;
+    if (dovestiPerehod === puskay) dovestiPerehod = null;
+    dalshe();
+  };
+  dovestiPerehod = puskay;
   const zvuk = skazat(kod, () => {
     const proshlo = performance.now() - nachalo;
     setTimeout(puskay, Math.max(0, minimum - proshlo));
@@ -807,11 +821,12 @@ function skazatIDalshe(kod, minimum, dalshe){
   setTimeout(() => {
     if (!zvuk || !(zvuk.currentTime > 0.05)) puskay();
   }, Math.max(minimum, 1500));
-  /* 🚨 Страховка срабатывает ТОЛЬКО если наша реплика всё ещё текущая.
+  /* 🚨 Страховка срабатывает, только если наш переход всё ещё текущий.
      Без этой привязки отменённый переход просыпался через 12 с и гнал
-     экран дальше, обрывая уже другую реплику. */
-  const moy = nomerZvuka;
-  setTimeout(() => { if (nomerZvuka === moy) puskay(); }, 12000);
+     экран дальше, обрывая уже другую реплику. Смотрим на номер ПЕРЕХОДА,
+     а не реплики: реплика может смениться по десятку причин, и ни одна
+     из них не повод бросать экран в вечном ожидании. */
+  setTimeout(() => { if (nomerPerehoda === moyPerehod) puskay(); }, 12000);
 }
 
 /** Код реплики задания: со зверем или без. */
@@ -2116,7 +2131,13 @@ el('tishe').onclick = () => {
   if (zvuk_vyklyuchen){
     if (igraet){ try{ igraet.pause(); igraet.currentTime = 0; }catch(e){} }
     ostanovitPovtor();
-  } else if (tekushee){
+    /* 🚨 Выключили звук посреди перехода — ждать больше нечего: конца
+       реплики не будет, мы её сами остановили. Доводим переход сразу,
+       иначе экран-вставка замирает навсегда (проверка боем 20.09). */
+    if (dovestiPerehod) dovestiPerehod();
+  } else if (tekushee && !perehodIdyot){
+    /* Реплику задания заводим, только если на экране задание: во время
+       вставки говорить про задание рано. */
     const k = kodRepliki(tekushee);
     skazat(k, () => zapustitPovtor(k));
   }
