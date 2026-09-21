@@ -1100,7 +1100,9 @@ function narisovatPut(){
     `<div class="tropa"><i style="width:${(dolya * 100).toFixed(1)}%"></i></div>`;
 }
 
+let pokazali_obrazec = false;    // показ обучения — один раз на задание
 function pokazat(){
+  pokazali_obrazec = false;
   const sekund = (performance.now() - nachalo_zahoda) / 1000;
   if (zamer.hvatit(vydano, sekund)) return finish();
 
@@ -1162,6 +1164,44 @@ function pokazat(){
      спрашивать: ребёнок слышал «Лампа. Где живёт этот звук?» и видел
      на экране КОТ (живая проба 19.09). Правило то же, что спасло ягодку:
      сначала решаем, какой экран, и только потом говорим. */
+  /* 🚨 ПОКАЗ ОБУЧЕНИЯ ИДЁТ ПЕРЕД ВОПРОСОМ. Раньше зверь сначала
+     произносил вопрос задания, а показ рисовался уже поверх звучащей
+     реплики: ребёнок слышал про одно число, видел другое, а потом
+     получал третье (живая проба 21.09). Та же беда, что была с ягодкой
+     и с домиками. Порядок теперь один для всех вставок: сначала решаем,
+     что на экране, потом говорим. */
+  if (rezhim === 'uchim' && OBRAZCY[z.stupen.id] && !pokazali_obrazec){
+    pokazali_obrazec = true;
+    el('slushat').style.display = 'none';
+    el('podpis').textContent = 'Смотрим вместе';
+    el('stol').innerHTML = '';
+    /* Показ не молчит: без голоса экран-вставка выглядит поломкой
+       (живая проба 19.09 про немой экран). Реплика одна на все показы —
+       она про то, что сейчас происходит, а не про задание. */
+    skazat('pokaz_vstup');
+    OBRAZCY[z.stupen.id](z, () => {
+      nachato = performance.now();
+      /* 🚨 Вопрос ждёт конца реплики показа — но НИКОГДА не ждёт вечно.
+         Первая моя версия просто вешала `onended` на текущий звук, и стоило
+         файлу не доехать (404 на свежей реплике), как игра замирала
+         намертво: у не начавшегося звука конца не будет. Это ровно та беда,
+         которую сегодня же чинили в переходах, — повторил своими руками.
+         Отсюда две страховки, как и там: ждём, только если звук ИДЁТ,
+         и не дольше двух с половиной секунд. */
+      let ushli = false;
+      const puskay = () => {
+        if (ushli) return;
+        ushli = true;
+        if (igraet) igraet.onended = null;
+        sprosit();
+      };
+      const idyot = igraet && !igraet.paused && !igraet.ended && igraet.currentTime > 0.05;
+      if (!idyot) return puskay();
+      igraet.onended = puskay;
+      setTimeout(puskay, 2500);
+    });
+    return;
+  }
   if (z.stupen.tip === 'shema_slova' && !pokazaliShemu){
     pokazaliShemu = true;
     el('slushat').style.display = 'none';
@@ -1234,16 +1274,9 @@ function dorisovat(){
      Ребёнок 6-7 лет не выполняет инструкцию, которой не видел: у Козыревой
      порядок жёсткий — сначала взрослый произносит слово с выделенным звуком,
      и лишь затем ребёнок называет звук сам. Показ — это и есть то, за что
-     платят: в замере его нет и быть не должно. */
-  if (rezhim === 'uchim' && OBRAZCY[z.stupen.id]){
-    OBRAZCY[z.stupen.id](z, () => {
-      nachato = performance.now();          // время считаем от НАЧАЛА задания
-      el('stol').innerHTML = '';
-      RISUEM[z.stupen.tip] ? RISUEM[z.stupen.tip](z) : RISUEM.vybor(z);
-      vmestitKogdaGotovo();
-    });
-    return;
-  }
+     платят: в замере его нет и быть не должно.
+     Сам показ идёт ВЫШЕ, до вопроса (см. pokazat): здесь рисуется уже
+     только задание. */
   RISUEM[z.stupen.tip] ? RISUEM[z.stupen.tip](z) : RISUEM.vybor(z);
   vmestitKogdaGotovo();
 }
@@ -1256,7 +1289,10 @@ function dorisovat(){
 /* Показ счёта: лапка трогает каждый предмет, цифра растёт.
    Возвращает, сколько миллисекунд занял весь показ, — чтобы вызывающий
    знал, когда переходить дальше, и не резал показ на полпути. */
-function pokazatSchyot(korobka, predmety, kogdaKonchit){
+/* 🚨 `so_schyotchikom = false` — когда цифра УЖЕ стоит на экране.
+   Иначе рядом оказываются две одинаковые цифры: та, что показываем,
+   и та, что дотикал счётчик (снимок Андрея 21.09). */
+function pokazatSchyot(korobka, predmety, kogdaKonchit, so_schyotchikom = true){
   /* 🚨 380 мс — прежний темп счёта. Поднимал до 460, чтобы успевала
      лапка, но это растянуло показ и прогон перестал доходить до финала
      за отведённые шаги (харнес 11.09). Лапку ускорил вместо этого:
@@ -1265,7 +1301,7 @@ function pokazatSchyot(korobka, predmety, kogdaKonchit){
   const cifra = document.createElement('div');
   cifra.className = 'obr-schet';
   cifra.textContent = '';
-  korobka.parentNode.insertBefore(cifra, korobka);
+  if (so_schyotchikom) korobka.parentNode.insertBefore(cifra, korobka);
 
   const lapa = document.createElement('img');
   lapa.className = 'obr-lapa';
@@ -1430,18 +1466,17 @@ const OBRAZCY = {
      прогностичная ступень по данным на русских первоклассниках (iPIPS,
      связь с итогом года 0,72) — показываем её особенно наглядно. */
   cifra_kolichestvo(z, dalshe){
-    /* 🚨 Показываем ДРУГУЮ цифру, не загаданную: иначе ответ виден
-       до вопроса (живая проба 18.09). Мало: цифра показа не должна
-       совпадать НИ С ОДНИМ вариантом ответа. 21.09 показ считал до шести,
-       а внизу лежали кучки на шесть и на семь — ребёнок, запомнивший
-       показ, тянется к шести, и мы меряем память о примере, а не счёт. */
-    const zagadano = z.zadanie.cifra;
-    const zanyato = (z.zadanie.vybor || []).concat([zagadano]);
-    let n = zagadano <= 3 ? zagadano + 2
-          : zagadano >= 9 ? zagadano - 2
-          : zagadano - 1;
-    for (let shag = 0; zanyato.includes(n) && shag < 12; shag++)
-      n = n <= 2 ? n + 1 : (n >= 10 ? n - 1 : (shag % 2 ? n + 1 : n - 1));
+    /* 🚨 ТО ЖЕ число, что в задании. Сначала я брал другое, чтобы не
+       выдать ответ, — и получилось три числа подряд: показ про восемь,
+       вопрос про десять, а между ними счётчик. Андрей 21.09: «это сильно
+       сбивает с толку, и плюс неизвестно, может ребёнок прочитать цифру
+       восемь или нет».
+
+       Разные числа тут не нужны: показ бывает ТОЛЬКО в обучении (в замере
+       показов нет вовсе), а в обучении «покажи, потом попроси» — это и есть
+       приём, а не поблажка. Ступень как раз про связь цифры с количеством:
+       её и показываем, на том же числе. */
+    const n = z.zadanie.cifra;
     const d = document.createElement('div');
     d.className = 'obrazec';
     d.innerHTML = `<div class="obr-podpis">Цифра и столько же орешков</div>
@@ -1450,9 +1485,11 @@ const OBRAZCY = {
         <div class="kucha obr-kucha">${'<i class="m"></i>'.repeat(n)}</div>
       </div>`;
     el('stol').appendChild(d);
-    el('podpis').textContent = `Цифра ${n} — это ${n} орешков`;
+    el('podpis').textContent =
+      `Цифра ${n} — это ${n} ${sklonenie(n, 'орешек', 'орешка', 'орешков')}`;
     const kucha = d.querySelector('.obr-kucha');
-    pokazatSchyot(kucha, [...kucha.querySelectorAll('i')], dalshe);
+    /* без счётчика: цифра уже стоит слева, и вторая такая же сбивает */
+    pokazatSchyot(kucha, [...kucha.querySelectorAll('i')], dalshe, false);
   },
 
   /* Больше/меньше: зверь пересчитывает ОБЕ кучки. Иначе ребёнок решает
