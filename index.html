@@ -483,6 +483,24 @@ body{
 .zastavka-zver img,.zastavka-zver svg{width:100%;height:auto;display:block}
 .zastavka-imya{font-family:Nunito;font-weight:900;
   font-size:clamp(38px,9vw,68px);color:var(--yantar);margin:0}
+.zastavka-uzhe{font-family:Comfortaa;font-weight:600;font-size:clamp(12px,1.9vw,14px);
+  color:var(--tihiy);margin:10px 0 0;max-width:46ch;line-height:1.5}
+.kak-ssylka{background:none;border:none;padding:0;font:inherit;color:var(--yantar);
+  font-weight:700;cursor:pointer;text-decoration:underline}
+/* Дверь взрослого на финале: видно, но не ярче корзины — экран
+   принадлежит ребёнку. */
+/* Не мельче 44 px: столько требует харнес от любой кнопки, и правило
+   верное — палец у взрослого не тоньше. */
+.vzroslomu{margin-top:clamp(10px,2vh,18px);background:none;border:2px solid var(--kora);
+  color:var(--tihiy);border-radius:999px;padding:12px 20px;min-height:44px;cursor:pointer;
+  font-family:Comfortaa,sans-serif;font-weight:700;font-size:clamp(12px,1.8vw,15px)}
+.vzroslomu:active{transform:translateY(2px)}
+.dalshe{background:var(--list-2);border-radius:18px;padding:clamp(12px,2.4vw,20px);
+  margin:0 0 clamp(14px,2.6vh,22px)}
+.dalshe h3{margin:0 0 8px;font-family:Comfortaa,sans-serif;font-size:clamp(15px,2.2vw,19px)}
+.dalshe ul{margin:0 0 8px;padding-left:20px}
+.dalshe li{margin:4px 0}
+.dalshe p{margin:0;font-size:clamp(13px,1.8vw,15px);color:var(--tihiy)}
 .zastavka-vzroslomu{font-family:Comfortaa;font-size:clamp(12px,1.9vw,14px);
   color:var(--tihiy);line-height:1.55;max-width:26rem;margin-top:clamp(8px,2vh,18px)}
 .bolshaya{font-family:Nunito;font-weight:900;font-size:clamp(20px,3.4vw,26px);
@@ -538,6 +556,9 @@ body{
     <h1 class="zastavka-imya">Знайчик</h1>
     <p class="pod">Помогаем зверятам — и учимся читать и считать</p>
     <button class="bolshaya" id="nachat-igru">Играть</button>
+    <!-- Строка появляется только когда заход уже был: до первого захода
+         показывать нечего, а пустая строка сбивает. -->
+    <p class="zastavka-uzhe" id="zastavka-uzhe" hidden></p>
     <!-- 🚨 Для родителя, мелким. Ребёнок не читает — ему хватает ёжика
          и большой кнопки. Взрослому надо понять замысел за один взгляд. -->
     <p class="zastavka-vzroslomu">
@@ -606,6 +627,10 @@ body{
   <div class="karta-vn">
     <h2>Что умеет ребёнок</h2>
     <p class="dop" id="dop"></p>
+    <!-- 🚨 «Какая дальнейшая программа?» — первый вопрос родителя после
+         захода (Андрей, 21.09). Отвечаем ДО перечня умений: умения он
+         и так примерно знает, а вот что будет завтра — нет. -->
+    <div class="dalshe" id="dalshe"></div>
     <!-- 🚨 Ручка уровня. В отзывах родителей её просят в двенадцать раз чаще,
          чем саму диагностику: 12 жалоб «нельзя сменить уровень» из 435 против
          одной просьбы про замер. Стоит ПЕРЕД картой, а не после. -->
@@ -1000,6 +1025,22 @@ function perejti(otkuda, kuda){
 
 function sobratZastavku(){
   el('zastavka-zver').innerHTML = ZVERI['yozh'];
+
+  /* 🚨 Заставка помнит, что заход уже был. Раньше после обновления
+     страницы она выглядела так же, как в первый раз: «просто возвращает
+     обратно на главную, где нарисован ёжик и мелкий текст» (21.09).
+     Ребёнку — «Продолжить», взрослому — строка с итогом и дверь в карту. */
+  const bylo = zamer ? zamer.itog() : {zahodov: 0, vsego: 0};
+  if (bylo.zahodov){
+    el('nachat-igru').textContent = 'Продолжить';
+    const uzhe = el('zastavka-uzhe');
+    if (uzhe){
+      uzhe.innerHTML = `Заходов: ${bylo.zahodov} · ответов записано: ${bylo.vsego}. `
+        + `<button class="kak-ssylka" id="zastavka-karta">Что игра узнала</button>`;
+      uzhe.hidden = false;
+      el('zastavka-karta').onclick = otkrytVhodVzroslogo;
+    }
+  }
 
   el('nachat-igru').onclick = () => {
     /* 🚨 Первое касание разблокирует звук на планшете: браузер пускает
@@ -2113,7 +2154,14 @@ function finish(){
         </svg>
         <div class="korzina-yagody" id="korzina-yagody"></div>
       </div>
+      <!-- 🚨 Дверь к итогу видно ИМЕННО ЗДЕСЬ. Родитель сидит рядом
+           в эту самую секунду и хочет знать, что игра поняла про ребёнка;
+           раньше карта лежала за уголком экрана с примером на умножение,
+           и её не находили вовсе (живая проба 21.09). Замок остаётся:
+           за кнопкой всё тот же пример, ребёнок внутрь не попадёт. -->
+      <button class="vzroslomu" id="itog-vzroslomu">Взрослому: что я узнал</button>
     </div>`;
+  el('itog-vzroslomu').onclick = otkrytVhodVzroslogo;
   nasypatYagody(yagod);
   el('zver').classList.add('prygaet');
   /* 🚨 Сколько собрал — ГОЛОСОМ, а не цифрой: ребёнок не читает.
@@ -2220,6 +2268,21 @@ function sobratKartu(){
       `Заходов: ${it.zahodov}. Ответов записано: ${it.vsego}. ` +
       `Проверены все ${vsego_stupeney} ступеней.`;
   }
+  /* 🚨 «Какая дальнейшая программа?» — прямой вопрос Андрея 21.09.
+     Карта отвечала только «что ребёнок умеет сейчас» и молчала о том,
+     что будет дальше. А платят как раз за «дальше»: диагностика без
+     продолжения — это тест, а не обучение. */
+  let dalshe = '';
+  for (const [kod, nav] of Object.entries(L.navyki)){
+    const x = zamer.stupenDlyaObucheniya(kod);
+    if (x && x.stupen) dalshe += `<li><b>${nav.imya}:</b> ${x.stupen.imya}</li>`;
+  }
+  el('dalshe').innerHTML = dalshe
+    ? `<h3>С чего начнётся следующий заход</h3><ul>${dalshe}</ul>
+       <p>Игра сама подстроится по ходу: ответил уверенно — поднимется выше,
+          споткнулся — вернётся к посильному.</p>`
+    : '';
+
   let h = '';
   for (const [kod, nav] of Object.entries(L.navyki)){
     h += `<div class="gruppa">${nav.imya}</div>`;
@@ -2315,7 +2378,7 @@ el('slushat').onclick = () => {
    а вводить при ребёнке всё равно придётся, и тот запомнит с трёх раз.
    Дыру нашёл сам, прогоняя работу по пяти пунктам практикума. */
 let pinOtvet = 0;
-el('ugol').onclick = () => {
+function otkrytVhodVzroslogo(){
   const a = 3 + Math.floor(Math.random()*6), b = 4 + Math.floor(Math.random()*6);
   pinOtvet = a * b;
   el('pin-vopros').textContent = `${a} × ${b}`;
@@ -2333,7 +2396,8 @@ el('ugol').onclick = () => {
     }
   });
   el('pin').classList.add('vidno');
-};
+}
+el('ugol').onclick = otkrytVhodVzroslogo;
 el('pin-otmena').onclick = () => el('pin').classList.remove('vidno');
 el('zakryt').onclick = () => el('karta').classList.remove('vidno');
 
