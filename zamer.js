@@ -169,9 +169,10 @@ export function sozdatZamer(L){
              дальше работает галоп. */
           const nazvan = P.uroven && P.uroven[kod];
           if (typeof nazvan === 'number') return v_kramkah(nazvan - 1);
-          const let_ = P.vozrast || 0;
-          if (let_ >= 7) return v_kramkah(Math.round(spisok.length * 0.3));
-          if (let_ === 6) return v_kramkah(Math.round(spisok.length * 0.15));
+          /* 🚨 Возраст больше не спрашиваем вовсе (23.09): «у 5-летнего
+             знания могут быть лучше, чем у 7-летнего». Начинаем снизу
+             и идём галопом — четыре-пять заданий, и мы у настоящей
+             границы независимо от того, сколько ребёнку лет. */
           return 0;
         }
 
@@ -386,11 +387,6 @@ export function sozdatZamer(L){
          в банке десятки заданий, они не повторяются. */
       return svoi.length ? svoi[svoi.length - 1] : null;
     },
-
-    /** Возраст ребёнка — грубая прикидка, откуда начинать ПОИСК.
-        🚨 Уровнем он не становится: экран возраста до 19.09 вообще ни
-        на что не влиял, хотя подпись обещала обратное. */
-    vozrast(let_){ P.vozrast = +let_ || 0; sohranit(P); },
 
     /** Что взрослый указал про уровень: {навык: индекс ступени}. */
     uroven(){ return { ...(P.uroven || {}) }; },

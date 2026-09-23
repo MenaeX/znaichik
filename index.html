@@ -72,8 +72,8 @@ body{
 .ekran.vidno{display:flex}
 
 /* ── вход: выбор зверька. Первое касание разблокирует звук ─────── */
-#vhod,#zastavka,#vozrast{align-items:center;justify-content:center;text-align:center}
-#zastavka h1,#vozrast h1{font-family:Comfortaa,sans-serif;font-size:clamp(24px,5vw,42px);margin:0}
+#vhod,#zastavka{align-items:center;justify-content:center;text-align:center}
+#zastavka h1{font-family:Comfortaa,sans-serif;font-size:clamp(24px,5vw,42px);margin:0}
 #vhod h1{font-family:Comfortaa,sans-serif;font-size:clamp(24px,5vw,42px);margin:0}
 #vhod .pod{color:var(--tihiy);font-size:clamp(14px,2vw,18px);font-weight:600;margin:0}
 .zveri-vybor{display:flex;gap:clamp(12px,2.5vw,26px);flex-wrap:wrap;justify-content:center;margin-top:clamp(14px,3vh,30px)}
@@ -205,6 +205,13 @@ body{
 .okno{width:clamp(64px,11vw,120px);height:clamp(78px,14vh,144px);border-radius:20px;
   border:4px dashed var(--kora);display:grid;place-items:center;
   font-family:Nunito;font-weight:900;font-size:clamp(34px,6vw,62px);transition:.2s}
+/* 🚨 Окна под СЛОВО, а не под букву: в предложении в каждое окошко
+   кладётся целое слово, и при ширине под одну букву слова налезали
+   друг на друга (снимок с телефона 23.09: «лисвидит»). */
+.okoshki-slova{flex-wrap:wrap}
+.okoshki-slova .okno{width:auto;min-width:clamp(62px,13vw,120px);
+  padding:0 clamp(6px,1.4vw,12px);font-size:clamp(17px,3vw,30px);
+  height:clamp(48px,9vh,86px)}
 .okno.zhdet{border-color:var(--yantar);background:color-mix(in srgb,var(--yantar) 10%,transparent)}
 .okno.zanyato{border-style:solid;border-color:var(--moh);background:var(--list-2)}
 
@@ -489,6 +496,9 @@ body{
   font-weight:700;cursor:pointer;text-decoration:underline}
 /* Дверь взрослого на финале: видно, но не ярче корзины — экран
    принадлежит ребёнку. */
+.itog-vzroslomu-stroka{font-family:Comfortaa,sans-serif;font-weight:600;
+  font-size:clamp(12px,1.8vw,14px);color:var(--tihiy);max-width:42ch;
+  margin:clamp(10px,2vh,16px) auto 0;line-height:1.5;text-align:center}
 /* Не мельче 44 px: столько требует харнес от любой кнопки, и правило
    верное — палец у взрослого не тоньше. */
 .vzroslomu{margin-top:clamp(10px,2vh,18px);background:none;border:2px solid var(--kora);
@@ -507,16 +517,6 @@ body{
   color:#fff;background:var(--yantar);border:0;border-radius:999px;cursor:pointer;
   padding:clamp(13px,2.2vh,18px) clamp(38px,7vw,62px);box-shadow:var(--ten)}
 .bolshaya:active{transform:translateY(2px)}
-.vozrast-vybor{display:flex;gap:clamp(12px,3vw,26px);justify-content:center;
-  flex-wrap:wrap;margin-top:clamp(14px,3vh,28px)}
-.vozrast-karta{font-family:Nunito;font-weight:900;border:0;cursor:pointer;
-  background:var(--list-2);color:var(--chernila);border-radius:var(--skruglenie,22px);
-  box-shadow:var(--ten);padding:clamp(18px,3vh,28px) clamp(22px,4vw,36px);
-  display:flex;flex-direction:column;align-items:center;gap:6px;min-width:96px}
-.vozrast-karta b{font-size:clamp(34px,7vw,54px);line-height:1;color:var(--yantar)}
-.vozrast-karta span{font-family:Comfortaa;font-weight:600;font-size:14px;
-  color:var(--tihiy)}
-.vozrast-karta:active{transform:translateY(2px)}
 /* 🚨 Картинка задания. Обёртке ширину задавали, а самой картинке —
    нет: <img> рисуется в природный размер и разносит раскладку.
    Живая проба 19.09: «появляется огромный кот и очень большой дом». */
@@ -562,18 +562,15 @@ body{
     <!-- 🚨 Для родителя, мелким. Ребёнок не читает — ему хватает ёжика
          и большой кнопки. Взрослому надо понять замысел за один взгляд. -->
     <p class="zastavka-vzroslomu">
-      Игра сама выясняет, что ребёнок уже умеет, и дальше даёт задания
-      от его уровня. Заход — около десяти минут. Микрофона нет, имя
-      ребёнка нигде не спрашивается.
+      <b>Первый заход — проверка.</b> Игра сама выяснит, что ребёнок уже
+      умеет: подбирает задания по ответам и за несколько минут доходит
+      до его уровня. Возраст не спрашиваем — он ничего не говорит о том,
+      что ребёнок знает. После проверки игра покажет вам итог и начнёт
+      учить оттуда, где он остановился.<br>
+      Заход — около десяти минут. Микрофона нет, имя ребёнка нигде
+      не спрашивается, всё остаётся на этом устройстве.
     </p>
   </div>
-</div>
-
-<div class="ekran" id="vozrast">
-  <h1>Сколько лет ребёнку?</h1>
-  <p class="pod">Это только точка отсчёта. Что ребёнок умеет на самом деле,
-     игра выяснит сама за первые минуты</p>
-  <div class="vozrast-vybor" id="vozrast-vybor"></div>
 </div>
 
 <div class="ekran" id="vhod">
@@ -925,12 +922,21 @@ function kodRepliki(z){
   return est_zver ? `${bez}_${moyZver}` : bez;
 }
 
-/* Нейтральные реплики перехода: ни одна не сообщает, верно ли ответил.
-   🚨 Похвальных тут нет намеренно — в замере ребёнку не говорят, угадал
-   он или нет. Поэтому ни «хорошо», ни «молодец». */
+/* Реплики после ответа. Ни одна НЕ СООБЩАЕТ, верно ли ответил, —
+   в замере это запрещено. Но сухая отмашка тоже плоха: живая проба
+   23.09 услышала «Вот такое ещё» в ответ на верно собранное предложение
+   и написала «что это значит? надо заменить на поощрительное».
+
+   🚨 Выход — хвалить УСИЛИЕ, а не результат: «молодец, что стараешься»
+   честно и после промаха, поэтому ничего не выдаёт. Голой похвалы
+   («молодец», «верно») тут по-прежнему нет: шестилетка понимает её
+   буквально и решит, что ответил правильно. */
 const SHAGI = ['shag', 'shag2', 'shag3', 'shag4', 'shag5', 'shag6', 'shag7',
                'shag8', 'shag9', 'shag10', 'shag11', 'shag12', 'shag13',
-               'shag14', 'shag15', 'shag16'];
+               'shag14', 'shag15', 'shag16',
+               /* похвала усилию — про то, КАК ребёнок работает */
+               'staranie1', 'staranie2', 'staranie3', 'staranie4',
+               'staranie5', 'staranie6'];
 /* 🚨 Раздаём КОЛОДОЙ, а не наугад. Со случайным выбором из пяти каждая
    реплика звучала за заход по три раза, и живая проба 19.09 услышала
    ровно это: «постоянно говорит "так, дальше"». Колода гарантирует, что
@@ -956,12 +962,17 @@ const otklik = () => OTKLIKI[Math.floor(Math.random()*OTKLIKI.length)];
    рубит её на полуслове (см. skazat). Вызывается из onended. */
 function zapustitPovtor(kod){
   clearTimeout(tikPovtor); clearTimeout(tikPokaz);
+  /* 🚨 ЗАДАНИЕ ПРОИЗНОСИТСЯ ОДИН РАЗ. Автоповтор задумывался как «выход
+     приходит сам»: ребёнок не ищет кнопку, игра напоминает сама. На живой
+     пробе 23.09 это оказалось помехой: «она постоянно повторяет задание,
+     а ребёнок пока думает… ребёнку мешает об этом думать. Один раз
+     сказала вопрос, и всё, больше не надо».
+
+     Повтор теперь по нажатию: «Послушать» на экране всегда, и через
+     несколько секунд молчания она начинает звать к себе — это заметно,
+     но не звучит. */
   const s = ((L && L.pravila && L.pravila.avtopovtor_sekund) || 6) * 1000;
-  tikPovtor = setTimeout(()=>{
-    /* повтор тоже ждёт своего конца, прежде чем заводить следующий */
-    skazat(kod, () => zapustitPovtor(kod));
-    el('slushat').classList.add('zovyot');
-  }, s);
+  tikPovtor = setTimeout(()=>{ el('slushat').classList.add('zovyot'); }, s);
   /* 🚨 Показ ответа — не раньше, чем ребёнок точно отвлёкся. Стояло s*2,
      то есть 12 секунд, при нашей же записанной норме «одно касание у детей
      4-6 лет ~14 с»: задумчивого ребёнка штрафовали по его же норме.
@@ -995,10 +1006,6 @@ async function zagruzit(){
   L = await r.json();
   pokazatSostoyanieZvuka();
   zamer = sozdatZamer(L);
-  /* Возраст спрашивается один раз и живёт отдельным ключом: после
-     перезагрузки экран не показывается, значит замеру надо подсказать
-     точку старта самим. */
-  if (vozrastRebyonka()) zamer.vozrast(vozrastRebyonka());
   el('zveri-vybor').innerHTML = L.zveri.map(z =>
     `<button class="zver-karta" data-z="${z}" aria-label="Выбрать">${ZVERI[z]}</button>`).join('');
   el('zveri-vybor').querySelectorAll('.zver-karta').forEach(b =>
@@ -1011,12 +1018,6 @@ async function zagruzit(){
    🚨 Игра начиналась сразу с выбора зверя, то есть практически с урока.
    Живая проба 19.09: «как главное меню должно быть какие-то кнопки,
    допустим, возраста ребёнка, о чём игра, какие-то вводные». */
-
-const VOZRASTY = [
-  {let: 5, podpis: 'пять лет'},
-  {let: 6, podpis: 'шесть лет'},
-  {let: 7, podpis: 'семь лет'},
-];
 
 function perejti(otkuda, kuda){
   el(otkuda).classList.remove('vidno');
@@ -1047,37 +1048,8 @@ function sobratZastavku(){
        воспроизведение только после жеста. Раньше это делал выбор зверя,
        теперь самый первый экран — значит звук готов ещё раньше. */
     razblokirovat();
-    /* Возраст спрашиваем ОДИН раз: второй заход начинается сразу с игры. */
-    perejti('zastavka', vozrastRebyonka() ? 'vhod' : 'vozrast');
+    perejti('zastavka', 'vhod');
   };
-
-  el('vozrast-vybor').innerHTML = VOZRASTY.map(v =>
-    `<button class="vozrast-karta" data-let="${v.let}" aria-label="${v.podpis}">` +
-    `<b>${v.let}</b><span>${v.podpis}</span></button>`).join('');
-  el('vozrast-vybor').querySelectorAll('.vozrast-karta').forEach(b =>
-    b.onclick = () => {
-      zapisatVozrast(+b.dataset.let);
-      perejti('vozrast', 'vhod');
-    });
-}
-
-/* 🚨 Возраст — ТОЛЬКО точка, откуда начинается поиск уровня, и ничего
-   больше. Андрей 19.09: «знания в 5 лет могут быть больше чем у 7-летнего,
-   смотря как его обучали». Поэтому возраст не назначает ступень: он
-   выбирает, с какого места игра начнёт искать, а ищет она галопом
-   (zamer.js, sleduyushiy_indeks) и за три-четыре задания доходит до
-   настоящей границы независимо от того, откуда стартовала.
-
-   До 19.09 подпись тут обещала ровно это, а кода не было вовсе:
-   zamer.vozrast не существовал, и семилетка начинал с буквы А. */
-function vozrastRebyonka(){
-  try { return +localStorage.getItem('znaichik_vozrast') || 0; }
-  catch(e){ return 0; }
-}
-
-function zapisatVozrast(let_){
-  try { localStorage.setItem('znaichik_vozrast', String(let_)); } catch(e){}
-  if (zamer && zamer.vozrast) zamer.vozrast(let_);
 }
 
 function nachat(){
@@ -1834,6 +1806,13 @@ const RISUEM = {
          и дальше ни одна инструкция ничего не значила. Отсюда и «мне
          непонятна логика заданий» на приёмке 29.08. */
       b.onclick = () => {
+        /* 🚨 Знакомство идёт мимо otvet(), а значит и мимо общей защиты
+           от частых нажатий. Ребёнок, который тычет по кнопке (норма для
+           шести лет — это записано в наших же правилах), перезапускал
+           переход снова и снова: каждый новый отменял страховку прежнего,
+           и первый же экран игры вис навсегда. Поймано прогоном 23.09,
+           тот же дефект, что был 11.09 на заданиях. */
+        if (perehodIdyot) return;
         if (n === 3){
           /* Знакомство идёт своим обработчиком, мимо otvet() — флаг
              «пройдено» ставим здесь, иначе правила игры показываются
@@ -1904,7 +1883,12 @@ const RISUEM = {
     RISUEM.vybor(z);
   },
   sobrat(z){
-    const ok=document.createElement('div'); ok.className='okoshki';
+    const ok=document.createElement('div');
+    /* 🚨 Окошко рассчитано на БУКВУ. В предложении туда кладут слово,
+       и слова налезали друг на друга (снимок 23.09: «лисвидит»).
+       Ставим отдельный класс: окна под слово шире и с мелким шрифтом. */
+    const slovami = z.zadanie.otvet.some(x => String(x).length > 1);
+    ok.className = 'okoshki' + (slovami ? ' okoshki-slova' : '');
     ok.innerHTML = z.zadanie.otvet.map((_,i)=>
       `<div class="okno ${i===0?'zhdet':''}" id="ok${i}"></div>`).join('');
     el('stol').appendChild(ok);
@@ -2024,7 +2008,8 @@ const RISUEM = {
   sobrat_chislo(z){
     const c=document.createElement('div');
     c.style.cssText='text-align:center;font-family:Comfortaa;font-size:clamp(20px,3vw,28px)';
-    c.textContent = 'Нужно ' + z.zadanie.cel;
+    /* Экран говорит то же, что голос: числа, а не кучки (23.09) */
+    c.textContent = 'Нужно получить ' + z.zadanie.cel;
     el('stol').appendChild(c);
     const d=document.createElement('div'); d.className='varianty';
     z.zadanie.vybor.forEach((para,i)=>{
@@ -2196,9 +2181,22 @@ function finish(){
            раньше карта лежала за уголком экрана с примером на умножение,
            и её не находили вовсе (живая проба 21.09). Замок остаётся:
            за кнопкой всё тот же пример, ребёнок внутрь не попадёт. -->
+      <!-- 🚨 «Что дальше нажимать, непонятно: сохранятся ли данные
+           и как подойти к следующему уроку» (живая проба 23.09).
+           Отвечаем прямо на экране: что это был за заход, что сохранено
+           и куда нажать, чтобы выйти. -->
+      <p class="itog-vzroslomu-stroka" id="itog-stroka"></p>
       <button class="vzroslomu" id="itog-vzroslomu">Взрослому: что я узнал</button>
+      <button class="vzroslomu" id="itog-na-glavnuyu">На главную</button>
     </div>`;
+  const zahodov = (zamer.itog() || {}).zahodov || 1;
+  el('itog-stroka').textContent = zahodov <= 1
+    ? 'Проверка закончена. Что игра узнала — в итоге для взрослого. '
+      + 'Всё сохранено на этом устройстве, следующий заход продолжит с этого места.'
+    : 'Заход сохранён на этом устройстве. Следующий начнётся с того места, '
+      + 'где ребёнок остановился.';
   el('itog-vzroslomu').onclick = otkrytVhodVzroslogo;
+  el('itog-na-glavnuyu').onclick = () => location.reload();
   nasypatYagody(yagod);
   el('zver').classList.add('prygaet');
   /* 🚨 Сколько собрал — ГОЛОСОМ, а не цифрой: ребёнок не читает.
@@ -2344,7 +2342,7 @@ function sobratKartu(){
 /* 🚨 Точка для машинных проверок. Скрипт — модуль, изнутри наружу
    не видно ничего, а экраны обязаны проверяться замером, а не глазами.
    Наружу отдаём ТОЛЬКО отрисовку: ни замера, ни прогресса ребёнка. */
-window.PROVERKA = {OBRAZCY, RISUEM, pokazatDomiki, vmestit, vmestitKogdaGotovo, zamer: () => zamer, sostoyanie: () => ({perehodIdyot, vydano, rezhim, obyavili_cel,
+window.PROVERKA = {OBRAZCY, RISUEM, pokazatDomiki, vmestit, vmestitKogdaGotovo, zamer: () => zamer, sostoyanie: () => ({perehodIdyot, nomerPerehoda, vydano, rezhim, obyavili_cel,
   /* что звучит прямо сейчас — по нему проверка видит, не украла ли
      кнопка звук у перехода (дефект 20.09) */
   zvuchit: igraet ? igraet.src.split('/').pop() : null})};
